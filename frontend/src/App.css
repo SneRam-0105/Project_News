@@ -1,0 +1,51 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.two {
+  display: grid;
+  width: 100%;
+  /* margin: 0 auto; */
+  gap: 0.4rem;
+  grid-auto-rows: 1fr;
+  grid-template-areas:
+    "Columns Columns Columns Columns"
+    " content content content right"
+    " content content content right"
+    " content content content right"
+    "end end end end";
+}
+
+.Header {
+  grid-area: Columns;
+  width: 100%;
+  background: lightblue;
+  padding: 1rem;
+  color: black;
+}
+
+.main {
+  grid-area: content;
+  background: rgb(237, 126, 126);
+  padding: 1rem;
+}
+.aside {
+  grid-area: right;
+  background: pink;
+  padding: 1rem;
+}
+
+.footer {
+  grid-area: end;
+  background-color: white;
+  padding: 1rem;
+}
