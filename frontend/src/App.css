@@ -28,9 +28,8 @@
 .Header {
   grid-area: Columns;
   width: 100%;
-  background: white;
+  background: lightblue;
   padding: 1rem;
-  min-height: 100px;
   color: black;
 }
 
