@@ -1,22 +1,36 @@
-#main {
+.main-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 20px; /* Add spacing between columns */
 }
-.main-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+
+.section {
+  padding: 10px;
+}
+
+.section-header {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .card {
-  max-width: 300px;
-  min-height: 150px;
-  background: white;
-  color: black;
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 5px;
-  font-size: 1rem;
+  display: flex; /* Use flexbox for layout */
+  width: 100%; /* Take full width of the section */
+  height: 200px; /* Adjust height as needed */
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e6e6e6;
 }
-.close-button {
-  float: right;
-  cursor: pointer;
+
+.card-content {
+  flex-grow: 1; /* Take up remaining space */
+  padding-right: 10px;
+  color: black;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
