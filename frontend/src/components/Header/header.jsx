@@ -1,12 +1,14 @@
 import './header.css'
+import logo from '../../assets/LOGO.png'
 
 function Header() {
     return (
         <div className="headerbar">
 
 
-            <div className="logo">EduNews
-                <img src="" alt='edunews'></img>
+            <div className="logo">
+                <img src={logo} alt="EduNews Logo" />
+
             </div>
             <div className="nav-links">
                 <a href="#">Information-Technology</a>

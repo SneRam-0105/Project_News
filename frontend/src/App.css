@@ -1,8 +1,9 @@
 /* #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 2rem; 
+
+  align-items: center;
 } */
 
 * {
@@ -13,9 +14,9 @@
 
 .two {
   display: grid;
-  width: 100%;
-  /* margin: 0 auto; */
-  gap: 0.4rem;
+  width: 80%;
+  gap: 10px;
+  margin: auto;
   grid-auto-rows: 1fr;
   grid-template-areas:
     "Columns Columns Columns Columns"
@@ -31,17 +32,19 @@
   background: lightblue;
   padding: 1rem;
   color: black;
+  height: 100px;
+  background-color: #191919;
 }
 
 .main {
   grid-area: content;
-  background: rgb(237, 126, 126);
-  padding: 1rem;
+  background-color: grey;
 }
 .aside {
   grid-area: right;
-  background: pink;
   padding: 1rem;
+  width: 300px;
+  background-color: grey;
 }
 
 .footer {
