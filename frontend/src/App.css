@@ -1,10 +1,8 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem; 
+#root {
+  max-width: 2000px;
 
-  align-items: center;
-} */
+  /* Reduce padding here if needed */
+}
 
 * {
   margin: 0;
@@ -14,10 +12,11 @@
 
 .two {
   display: grid;
-  width: 80%;
+  width: 100%;
   gap: 10px;
-  margin: auto;
-  grid-auto-rows: 1fr;
+
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  grid-template-rows: 100px auto auto auto 50px;
   grid-template-areas:
     "Columns Columns Columns Columns"
     " content content content right"
@@ -29,26 +28,27 @@
 .Header {
   grid-area: Columns;
   width: 100%;
-  background: lightblue;
-  padding: 1rem;
-  color: black;
   height: 100px;
-  background-color: #191919;
+  padding: 1rem;
+  color: #191919;
+  background-color: #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main {
   grid-area: content;
-  background-color: grey;
+  padding: 2rem;
+  /* background-color: grey; */
 }
 .aside {
   grid-area: right;
-  padding: 1rem;
+  padding: 2rem;
   width: 300px;
-  background-color: grey;
 }
 
 .footer {
   grid-area: end;
-  background-color: white;
   padding: 1rem;
 }

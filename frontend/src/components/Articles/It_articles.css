@@ -1,9 +1,11 @@
+/* Main Section Styling */
 .main-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
   gap: 20px; /* Add spacing between columns */
 }
 
+/* Section Styling */
 .section {
   padding: 10px;
 }
@@ -11,26 +13,50 @@
 .section-header {
   font-weight: bold;
   margin-bottom: 10px;
-}
-
-.card {
-  display: flex; /* Use flexbox for layout */
-  width: 100%; /* Take full width of the section */
-  height: 200px; /* Adjust height as needed */
-  /* border: 1px solid black; */
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #e6e6e6;
-}
-
-.card-content {
-  flex-grow: 1; /* Take up remaining space */
-  padding-right: 10px;
   color: black;
 }
 
+/* Card Styling */
+.card {
+  display: flex; /* Flexbox for layout */
+  flex-direction: row; /* Content and image side by side */
+  width: 100%; /* Ensure it takes full width of the grid column */
+  height: 200px; /* Full width of the section */
+  overflow: hidden; /* Clip overflowing content */
+  background-color: #e6e6e6; /* Fallback background color */
+  margin-bottom: 30px; /* Light shadow for depth */
+}
+
+/* Card Content Styling (Left Side) */
+.card-content {
+  flex-grow: 1; /* Take up remaining space */
+  padding-right: 10px; /* Take up remaining space */
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  color: #191919;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Card Image Styling (Right Side) */
 .card-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  /* Make it take equal space as the content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 150px; /* Ensure it fully covers the card height */
+  height: 100%; /* Ensure it fully covers the card width */
+  object-fit: cover; /* Prevent distortion while covering area */
+}
+
+/* Optional Hover Effect for Image */
+.card-image img:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  transition: transform 0.3s ease-in-out;
 }
