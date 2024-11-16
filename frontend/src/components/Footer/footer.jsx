@@ -36,7 +36,7 @@ function Footer() {
 
 
             <div className="footer-bottom">
-                <p>&copy; 2024 Newspaper Inc. All rights reserved.</p>
+                <p>&copy; 2024 Newspaper Inc. All rights reserved. Edu_News</p>
             </div>
         </footer>
 
