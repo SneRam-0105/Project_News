@@ -7,17 +7,19 @@ import Articles from './components/Articles/It_articles'
 
 function App() {
   return (
-    <div className="two">
-
+    <>
       <div className="Header"> <Header /></div>
-      <div className="main"><Articles /></div>
-      <div className="aside"><Widget /></div>
-      <div className="footer"><Footer /></div>
-    </div>
+      <div className="two">
+
+
+        <div className="main"><Articles /></div>
+        <div className="aside"><Widget /></div>
+        <div className="footer"><Footer /></div>
+      </div>
 
 
 
-
+    </>
 
 
 
