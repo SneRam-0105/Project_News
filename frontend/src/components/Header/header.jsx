@@ -17,7 +17,7 @@ const Header = ({ onClickCategory }) => {
         >
             {/* Logo Section */}
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 65 }}>
-                <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+                <img src={logo} alt="Logo" style={{ height: '95px', width: 'auto' }} />
             </Box>
 
             {/* Navbar Section */}
@@ -89,7 +89,7 @@ const Header = ({ onClickCategory }) => {
                 <IconButton sx={{ marginRight: 1 }}>
                     <AccountCircle fontSize="large" />
                 </IconButton>
-                <Typography variant="body1" sx={{ color: '#191919' }}>
+                <Typography variant="h6" sx={{ color: '#191919', fontWeight: 'bold' }}>
                     Login
                 </Typography>
             </Box>
