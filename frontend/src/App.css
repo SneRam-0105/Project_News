@@ -13,7 +13,7 @@
 .two {
   display: grid;
   width: 100%;
-  gap: 10px;
+  gap: 30px;
 
   grid-template-columns: repeat(4, 1fr);
   /* 4 equal columns */
