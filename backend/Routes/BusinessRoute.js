@@ -14,8 +14,8 @@ Businessrouter.get("/", async (req, res) => {
     );
 
     // Destructuring in backend and sending the processed data to frontend
-    const formattedArticles = response.data.articles.map(article => ({
-      id: article.source.id || null,
+    const formattedArticles = response.data.articles.map((article, index) => ({
+      id: index,
       author: article.author || "Unknown",
       title: article.title,
       description: article.description,
