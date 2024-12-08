@@ -3,7 +3,6 @@ import { Button, Typography, IconButton, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logo from '../../assets/LOGO.png';
 
-
 const Header = ({ onClickCategory }) => {
     return (
         <Box
@@ -12,8 +11,10 @@ const Header = ({ onClickCategory }) => {
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
                 padding: '8px 20px',
+                marginBottom: '35px',
                 backgroundColor: '#e6e6e6',
                 color: '#c83131',
+
             }}
         >
             {/* Logo Section */}
@@ -22,6 +23,7 @@ const Header = ({ onClickCategory }) => {
                     <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
                 </Box>
             </NavLink>
+
             {/* Navbar Section */}
             <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
                 <ul
@@ -32,7 +34,14 @@ const Header = ({ onClickCategory }) => {
                         padding: 0,
                     }}
                 >
-                    <NavLink to='IT'>
+                    {/* IT Category */}
+                    <NavLink
+                        to='/IT'
+                        style={({ isActive }) => ({
+                            textDecoration: 'none',
+                            color: isActive ? '#aa3030' : '#191919',
+                        })}
+                    >
                         <li style={{ margin: '9px 20px' }}>
                             <Button
                                 variant="text"
@@ -51,7 +60,15 @@ const Header = ({ onClickCategory }) => {
                             </Button>
                         </li>
                     </NavLink>
-                    <NavLink to='Business'>
+
+                    {/* Business Category */}
+                    <NavLink
+                        to='/Business'
+                        style={({ isActive }) => ({
+                            textDecoration: 'none',
+                            color: isActive ? '#aa3030' : '#191919',
+                        })}
+                    >
                         <li style={{ margin: '9px 20px' }}>
                             <Button
                                 variant="text"
@@ -70,7 +87,15 @@ const Header = ({ onClickCategory }) => {
                             </Button>
                         </li>
                     </NavLink>
-                    <NavLink to='Edu'>
+
+                    {/* Education Category */}
+                    <NavLink
+                        to='/Edu'
+                        style={({ isActive }) => ({
+                            textDecoration: 'none',
+                            color: isActive ? '#aa3030' : '#191919',
+                        })}
+                    >
                         <li style={{ margin: '9px 20px' }}>
                             <Button
                                 variant="text"
@@ -89,7 +114,6 @@ const Header = ({ onClickCategory }) => {
                             </Button>
                         </li>
                     </NavLink>
-
                 </ul>
             </Box>
 
