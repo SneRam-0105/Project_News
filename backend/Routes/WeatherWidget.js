@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
     };
     weatherData.iconUrl = `https://openweathermap.org/img/wn/${weatherData.iconCode}@4x.png`,
 
-    console.log(weatherData);
+    //console.log(weatherData);
 
     res.send(weatherData);
   } catch (error) {
