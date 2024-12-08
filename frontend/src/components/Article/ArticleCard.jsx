@@ -7,7 +7,7 @@ import {
     Button,
     Chip,
 } from "@mui/material";
-import defaultImage from "../../assets/default-img.jpg"; // Ensure this image exists in the path
+import defaultImage from "../../assets/default-img.jpg";
 
 const ArticleCard = ({ title, author, description, url, urlToImage, content, date, category }) => {
     return (
@@ -29,18 +29,17 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                 },
             }}
         >
-            {/* Card Image with fallback logic */}
+
             <CardMedia
                 component="img"
                 height="250"
-                image={urlToImage || defaultImage} // Use fallback if urlToImage is missing
+                image={urlToImage || defaultImage}
                 alt={title}
                 sx={{ borderRadius: "4px 4px 0 0" }}
             />
 
-            {/* Card Content */}
+
             <CardContent sx={{ flexGrow: 1 }}>
-                {/* Category */}
                 {category && (
                     <Chip
                         label={category}
@@ -50,7 +49,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                     />
                 )}
 
-                {/* Title */}
+
                 <Typography
                     variant="h6"
                     component="div"
@@ -64,7 +63,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                     {title}
                 </Typography>
 
-                {/* Author and Date */}
+
                 <Typography
                     variant="caption"
                     color="textSecondary"
@@ -77,7 +76,6 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                     {author && <strong>By {author}</strong>} | {date}
                 </Typography>
 
-                {/* Description */}
                 <Typography
                     variant="body2"
                     color="textSecondary"
@@ -94,7 +92,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                 </Typography>
             </CardContent>
 
-            {/* Button */}
+
             <Button
                 variant="contained"
                 href={url}
