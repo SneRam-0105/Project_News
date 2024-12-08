@@ -16,7 +16,6 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 height: '100%',
-                maxWidth: 350,
                 boxShadow: 3,
                 borderRadius: 1,
                 transition: "transform 0.3s, box-shadow 0.3s",
@@ -104,7 +103,6 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
             >
                 Read More
             </Button>
-
         </Card>
     );
 };
