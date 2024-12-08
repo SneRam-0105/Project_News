@@ -27,22 +27,38 @@ const IT_Page = () => {
             {loading ? (
                 <CircularProgress />
             ) : (
-                <Grid container spacing={3}>
-                    {articles.map((news) => (
-                        <Grid
-                            item
-                            xs={12}
-                            sm={6}
-                            md={4}
-                            key={news.id}
-                            sx={{ display: 'flex' }} // Ensures all cards take the same height
-                        >
-                            {/* Ensuring each card stretches to the same height */}
-                            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                                <ArticleCard {...news} />
-                            </div>
-                        </Grid>
-                    ))}
+                <Grid container spacing={6} sx={{ alignItems: 'stretch' }}>
+                    {articles.length > 0 && (
+                        <>
+                            {/* First Article takes 60% of the width */}
+                            <Grid
+                                item
+                                xs={12}
+                                md={8}
+                                sx={{ display: 'flex' }}
+                            >
+                                <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                    <ArticleCard {...articles[0]} />
+                                </div>
+                            </Grid>
+
+                            {/* Other articles with uniform sizes */}
+                            {articles.slice(1).map((news, index) => (
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sm={6}
+                                    md={4}
+                                    key={news.id}
+                                    sx={{ display: 'flex' }}
+                                >
+                                    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                                        <ArticleCard {...news} />
+                                    </div>
+                                </Grid>
+                            ))}
+                        </>
+                    )}
                 </Grid>
             )}
         </Container>
