@@ -20,7 +20,7 @@ const Header = ({ onClickCategory }) => {
             {/* Logo Section */}
             <NavLink to='/'>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 65 }}>
-                    <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+                    <img src={logo} alt="Logo" style={{ height: '80px', width: 'auto' }} />
                 </Box>
             </NavLink>
 
