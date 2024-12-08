@@ -15,9 +15,9 @@ Techrouter.get("/", async (req, res) => {
       `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${NEWS_API_KEY}`
     );
     // Destructuring starts
-    const TechNews = response.data.articles.map(article => ({
+    const TechNews = response.data.articles.map((article, index) => ({
 
-      id: article.source.id || null, // Fallback if id goes missing
+      id: index, // Fallback if id goes missing
       author: article.author || "Unknown",
       title: article.title,
       description: article.description,
