@@ -98,7 +98,7 @@ const Header = ({ onClickCategory }) => {
                 <IconButton sx={{ marginRight: 1 }}>
                     <AccountCircle fontSize="large" />
                 </IconButton>
-                <Typography variant="body1" sx={{ color: '#191919' }}>
+                <Typography variant="h6" sx={{ color: '#191919', fontWeight: 'bold' }}>
                     Login
                 </Typography>
             </Box>
