@@ -5,29 +5,41 @@ import Widget from "../components/Weather/widget";
 
 const WeatherApp = () => {
   const [weather, setWeather] = useState([]);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("Helsinki");
   const [loading, setLoading] = useState([true]);
   useEffect(() => {
-    axios
-      .get(`http://localhost:5002/weather?city=${city}`) // change port no. accordingly
-      .then((response) => {
-        weather = setWeather(response.data);
-        console.log(weather);
-        console.log(response.data);
+    const fetchWeatherData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5002/weather?city=${city}`
+        );
+        setWeather(response.data);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
-      });
+      }
+    };
+    fetchWeatherData();
   }, []);
+
+  const handleChanges = (e) => {
+    setCity(e.target.value);
+  };
+  console.log(weather);
 
   return (
     <div>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        weather.map((item) => <Widget key={item.cityName} {...item} />)
+        <Widget
+          key={weather.cityName}
+          cityName={city}
+          temperature={weather.temperature}
+          description={weather.description}
+          iconUrl={weather.iconUrl}
+        />
       )}
     </div>
   );
