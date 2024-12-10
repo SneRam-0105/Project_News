@@ -8,26 +8,29 @@ const WeatherApp = () => {
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("Helsinki");
   const [loading, setLoading] = useState([true]);
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5002/weather?city=${city}`
-        );
-        setWeather(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-    fetchWeatherData();
-  }, []);
 
-  const handleChanges = (e) => {
+  const weatherSubmitButton = (e) => {
     setCity(e.target.value);
+    fetchWeatherData();
   };
-  console.log(weather);
+
+  const fetchWeatherData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5002/weather?city=${city}`
+      );
+      setWeather(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchWeatherData(city);
+  }, [city]);
+  //console.log(weather);
 
   return (
     <div>
@@ -36,10 +39,11 @@ const WeatherApp = () => {
       ) : (
         <Widget
           key={weather.cityName}
-          cityName={city}
+          cityName={weather.cityName}
           temperature={weather.temperature}
           description={weather.description}
           iconUrl={weather.iconUrl}
+          submitButton={weatherSubmitButton}
         />
       )}
     </div>

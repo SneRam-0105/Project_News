@@ -9,15 +9,10 @@ import {
   Grid,
   Button,
   TextField,
+  colors,
 } from "@mui/material";
 
-function Widget({ cityName, temperature, description, iconUrl, click }) {
-  const [isToggle, setToggle] = useState(false);
-
-  const handleChanges = () => {
-    setToggle((prev) => !prev);
-  };
-
+function Widget({ cityName, temperature, description, iconUrl, submitButton }) {
   return (
     <Box
       sx={{
@@ -34,7 +29,7 @@ function Widget({ cityName, temperature, description, iconUrl, click }) {
           padding: 1.2,
           marginBottom: 3,
           borderRadius: 1,
-          backgroundColor: "grey.300",
+          backgroundColor: "#6eb9ee",
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -42,7 +37,7 @@ function Widget({ cityName, temperature, description, iconUrl, click }) {
         </Typography>
         <Box
           sx={{
-            height: "60px",
+            height: "70px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -55,15 +50,7 @@ function Widget({ cityName, temperature, description, iconUrl, click }) {
         </Box>
         <Typography variant="h5">{temperature}°C</Typography>
         <Typography>{description}</Typography>
-        <TextField label="Search" variant="outlined" onChange={click} />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          onClick={handleChanges}
-        >
-          Search
-        </Button>
+        <TextField label="Search" variant="outlined" onChange={submitButton} />
       </Box>
 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
