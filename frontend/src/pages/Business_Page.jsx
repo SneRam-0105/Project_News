@@ -32,8 +32,8 @@ const Business_Page = () => {
                             item
                             key={news.id}
                             xs={12}
-                            sm={index % 6 === 0 ? 9 : 3}
-                            md={index % 6 === 0 ? 9 : 3}
+                            sm={index % 6 === 0 ? 6 : 6}
+                            md={index % 5 === 0 ? 8 : 4}
                             sx={{
                                 display: "flex",
                                 justifyContent: "center",
