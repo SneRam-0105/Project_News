@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Button, Typography, IconButton, Box } from '@mui/material';
+import { Button, Typography, IconButton, Box, Container } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logo from '../../assets/LOGO.png';
 
@@ -120,14 +120,14 @@ const Header = ({ onClickCategory }) => {
             </Box>
 
             {/* Login Section */}
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
-                <IconButton sx={{ marginRight: 1 }}>
-                    <AccountCircle fontSize="large" />
-                </IconButton>
-                <Typography variant="h6" sx={{ color: '#191919', fontWeight: 'bold' }}>
-                    Login
-                </Typography>
-            </Box>
+            <NavLink to='/Login'>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
+                    <AccountCircle fontSize="large" sx={{ mx: "10px" }} />
+                    <Typography variant="h6" sx={{ color: '#191919', fontWeight: 'bold' }}>
+                        Login
+                    </Typography>
+                </Box>
+            </NavLink>
         </Box>
     );
 };
