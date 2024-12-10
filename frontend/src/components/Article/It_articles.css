@@ -24,7 +24,7 @@
   height: 200px; /* Full width of the section */
   overflow: hidden; /* Clip overflowing content */
   background-color: #e6e6e6; /* Fallback background color */
-  margin-bottom: 30px; /* Light shadow for depth */
+  margin-top: 20px;
 }
 
 /* Card Content Styling (Left Side) */
