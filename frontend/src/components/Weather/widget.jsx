@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Box,
   Typography,
@@ -6,9 +7,17 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Button,
+  TextField,
 } from "@mui/material";
 
-function Widget({ cityName, temperature, description, iconUrl }) {
+function Widget({ cityName, temperature, description, iconUrl, click }) {
+  const [isToggle, setToggle] = useState(false);
+
+  const handleChanges = () => {
+    setToggle((prev) => !prev);
+  };
+
   return (
     <Box
       sx={{
@@ -33,6 +42,7 @@ function Widget({ cityName, temperature, description, iconUrl }) {
         </Typography>
         <Box
           sx={{
+            height: "60px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -42,10 +52,18 @@ function Widget({ cityName, temperature, description, iconUrl }) {
           <Typography variant="h3" sx={{ marginRight: 1 }}>
             <img src={iconUrl} alt="" />
           </Typography>
-          <Typography variant="h5">{temperature}°C</Typography>
         </Box>
+        <Typography variant="h5">{temperature}°C</Typography>
         <Typography>{description}</Typography>
-        <input type="text" placeholder="Enter City Name" />
+        <TextField label="Search" variant="outlined" onChange={click} />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          onClick={handleChanges}
+        >
+          Search
+        </Button>
       </Box>
 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
