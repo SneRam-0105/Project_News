@@ -32,7 +32,6 @@ export default function Footer() {
                         Privacy Policy
                     </Link>
                 </Grid>
-<<<<<<< HEAD
                 {/* Social Media Links */}
                 <Grid item xs={12} sm={4}>
                     <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
@@ -52,28 +51,6 @@ export default function Footer() {
 
             <Divider sx={{ bgcolor: "#545454", my: 4 }} />
 
-=======
-
-                {/* Social Media Links */}
-                <Grid item xs={12} sm={4}>
-                    <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
-                        Follow Us
-                    </Typography>
-                    <Link href="https://facebook.com" target="_blank" color="inherit" underline="hover" sx={{ mr: 1 }}>
-                        Facebook
-                    </Link>
-                    <Link href="https://twitter.com" target="_blank" color="inherit" underline="hover" sx={{ mr: 1 }}>
-                        Twitter
-                    </Link>
-                    <Link href="https://instagram.com" target="_blank" color="inherit" underline="hover">
-                        Instagram
-                    </Link>
-                </Grid>
-            </Grid>
-
-            <Divider sx={{ bgcolor: "#545454", my: 4 }} />
-
->>>>>>> d9ba64cb5b34d653252f39ac7fb8725e740b23f0
             {/* Footer Bottom */}
             <Box sx={{ textAlign: "center", fontSize: "12px" }}>
                 <Typography>&copy; 2024 Newspaper Inc. All rights reserved.</Typography>
