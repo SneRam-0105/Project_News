@@ -37,8 +37,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content }) =
 
             </div>
 
-
-        </div>
+</div>
 
     )
 }
