@@ -9,11 +9,6 @@ const WeatherApp = () => {
   const [city, setCity] = useState("Helsinki");
   const [loading, setLoading] = useState([true]);
 
-  const weatherSubmitButton = (e) => {
-    setCity(e.target.value);
-    fetchWeatherData();
-  };
-
   const fetchWeatherData = async () => {
     try {
       const response = await axios.get(
@@ -27,10 +22,18 @@ const WeatherApp = () => {
     }
   };
 
+  const SubmitButton = () => {
+    fetchWeatherData();
+  };
+
+  const cityUpdate = (e) => {
+    e.preventDefault();
+    setCity(e.target.value);
+  };
+
   useEffect(() => {
     fetchWeatherData(city);
-  }, [city]);
-  //console.log(weather);
+  }, []);
 
   return (
     <div>
@@ -43,7 +46,8 @@ const WeatherApp = () => {
           temperature={weather.temperature}
           description={weather.description}
           iconUrl={weather.iconUrl}
-          submitButton={weatherSubmitButton}
+          submitButton={SubmitButton}
+          click={cityUpdate}
         />
       )}
     </div>

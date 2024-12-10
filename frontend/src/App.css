@@ -54,3 +54,11 @@
   grid-area: end;
   padding: 1rem;
 }
+
+.active-link {
+  color: #aa3030 !important;
+}
+
+.inactive-link {
+  color: #191919 !important;
+}

@@ -12,7 +12,14 @@ import {
   colors,
 } from "@mui/material";
 
-function Widget({ cityName, temperature, description, iconUrl, submitButton }) {
+function Widget({
+  cityName,
+  temperature,
+  description,
+  iconUrl,
+  submitButton,
+  click,
+}) {
   return (
     <Box
       sx={{
@@ -50,7 +57,8 @@ function Widget({ cityName, temperature, description, iconUrl, submitButton }) {
         </Box>
         <Typography variant="h5">{temperature}°C</Typography>
         <Typography>{description}</Typography>
-        <TextField label="Search" variant="outlined" onChange={submitButton} />
+        <TextField label="Search City" variant="outlined" onChange={click} />
+        <Button onClick={submitButton}>Search</Button>
       </Box>
 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
