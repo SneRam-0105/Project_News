@@ -32,7 +32,6 @@ export default function Footer() {
                         Privacy Policy
                     </Link>
                 </Grid>
-
                 {/* Social Media Links */}
                 <Grid item xs={12} sm={4}>
                     <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
