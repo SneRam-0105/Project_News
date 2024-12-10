@@ -36,7 +36,8 @@ const Header = ({ onClickCategory }) => {
                 >
                     {/* IT Category */}
                     <NavLink
-                        to='/IT'
+                        to="/IT"
+                        end
                         style={({ isActive }) => ({
                             textDecoration: 'none',
                             color: isActive ? '#aa3030' : '#191919',
@@ -47,7 +48,7 @@ const Header = ({ onClickCategory }) => {
                                 variant="text"
                                 onClick={() => onClickCategory('technology')}
                                 sx={{
-                                    color: '#191919',
+                                    color: 'inherit',
                                     fontSize: 20,
                                     fontWeight: 'bold',
                                     textTransform: 'none',
@@ -61,9 +62,10 @@ const Header = ({ onClickCategory }) => {
                         </li>
                     </NavLink>
 
-                    {/* Business Category */}
+
                     <NavLink
-                        to='/Business'
+                        to="/Business"
+                        end
                         style={({ isActive }) => ({
                             textDecoration: 'none',
                             color: isActive ? '#aa3030' : '#191919',
@@ -74,7 +76,7 @@ const Header = ({ onClickCategory }) => {
                                 variant="text"
                                 onClick={() => onClickCategory('business')}
                                 sx={{
-                                    color: '#191919',
+                                    color: 'inherit',
                                     fontSize: 20,
                                     fontWeight: 'bold',
                                     textTransform: 'none',
@@ -88,9 +90,9 @@ const Header = ({ onClickCategory }) => {
                         </li>
                     </NavLink>
 
-                    {/* Education Category */}
                     <NavLink
-                        to='/Edu'
+                        to="/Edu"
+                        end
                         style={({ isActive }) => ({
                             textDecoration: 'none',
                             color: isActive ? '#aa3030' : '#191919',
@@ -101,7 +103,7 @@ const Header = ({ onClickCategory }) => {
                                 variant="text"
                                 onClick={() => onClickCategory('education')}
                                 sx={{
-                                    color: '#191919',
+                                    color: 'inherit',
                                     fontSize: 20,
                                     fontWeight: 'bold',
                                     textTransform: 'none',
