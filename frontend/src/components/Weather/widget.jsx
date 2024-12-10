@@ -8,7 +8,7 @@ import {
   Grid,
 } from "@mui/material";
 
-function Widget({ cityName, temperature, description, iconCode, iconUrl }) {
+function Widget({ cityName, temperature, description, iconUrl }) {
   return (
     <Box
       sx={{
@@ -29,7 +29,7 @@ function Widget({ cityName, temperature, description, iconCode, iconUrl }) {
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-          Current Weather
+          {cityName}
         </Typography>
         <Box
           sx={{
@@ -40,12 +40,12 @@ function Widget({ cityName, temperature, description, iconCode, iconUrl }) {
           }}
         >
           <Typography variant="h3" sx={{ marginRight: 1 }}>
-            ☁️
+            <img src={iconUrl} alt="" />
           </Typography>
-          <Typography variant="h5">22°C</Typography>
+          <Typography variant="h5">{temperature}°C</Typography>
         </Box>
-        <Typography>71.6 F</Typography>
-        <Typography>Partially Cloudy</Typography>
+        <Typography>{description}</Typography>
+        <input type="text" placeholder="Enter City Name" />
       </Box>
 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
