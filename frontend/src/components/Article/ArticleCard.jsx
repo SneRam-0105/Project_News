@@ -19,7 +19,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                 mt: 2,
                 mb: 3,
                 height: "100%",
-                backgroundColor: "#d3d3d3",
+                backgroundColor: "#fff",
                 boxShadow: 3,
                 borderRadius: "1px",
                 transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -101,11 +101,11 @@ const ArticleCard = ({ title, author, description, url, urlToImage, content, dat
                 fullWidth
                 sx={{
                     fontSize: "0.9rem",
-                    backgroundColor: "#aa3030",
+                    backgroundColor: "#fff",
                     borderRadius: 0,
-                    color: "#fff",
+                    color: "#aa3030",
                     "&:hover": {
-                        backgroundColor: "#ef5350",
+                        backgroundColor: "#aa3030",
                     },
                 }}
             >
