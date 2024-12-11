@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Button, Typography, IconButton, Box, Container } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logo from '../../assets/LOGO.png';
 

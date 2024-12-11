@@ -1,4 +1,3 @@
-import React from "react";
 import {
     Card,
     CardContent,
@@ -9,7 +8,7 @@ import {
 } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
 
-const ArticleCard = ({ title, author, description, url, urlToImage, content, date, category }) => {
+const ArticleCard = ({ title, author, description, url, urlToImage, date, category }) => {
     return (
         <Card
             sx={{
