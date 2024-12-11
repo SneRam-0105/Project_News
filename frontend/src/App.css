@@ -52,7 +52,6 @@
 
 .footer {
   grid-area: end;
-  padding: 1rem;
 }
 
 .active-link {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, Paper } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
 
 const Education = () => {
     const [faculties, setFaculties] = useState([]);
