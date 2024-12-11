@@ -11,7 +11,7 @@ import {
   TextField,
   colors,
 } from "@mui/material";
-
+ 
 function Widget({
   cityName,
   temperature,
@@ -60,11 +60,11 @@ function Widget({
         <TextField label="Search City" variant="outlined" onChange={click} />
         <Button onClick={submitButton}>Search</Button>
       </Box>
-
+ 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
-
+ 
       <Card
         sx={{
           display: "flex",
@@ -92,11 +92,11 @@ function Widget({
           }}
         />
       </Card>
-
+ 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Watch the news on YouTube
       </Typography>
-
+ 
       <Card
         sx={{
           display: "flex",
@@ -125,5 +125,5 @@ function Widget({
     </Box>
   );
 }
-
+ 
 export default Widget;
