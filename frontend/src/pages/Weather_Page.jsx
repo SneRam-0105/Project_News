@@ -3,12 +3,12 @@ import { useState } from "react";
 import axios from "axios";
 import Widget from "../components/Weather/widget";
 import { CircularProgress } from "@mui/material";
-
+ 
 const WeatherApp = () => {
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("Helsinki");
   const [loading, setLoading] = useState([true]);
-
+ 
   const fetchWeatherData = async () => {
     try {
       const response = await axios.get(
@@ -21,34 +21,39 @@ const WeatherApp = () => {
       setLoading(false);
     }
   };
-
+ 
   const SubmitButton = () => {
     fetchWeatherData();
   };
-
+ 
   const cityUpdate = (e) => {
     e.preventDefault();
     setCity(e.target.value);
   };
-
+ 
   useEffect(() => {
     fetchWeatherData(city);
   }, []);
-
-	return (
-		<div>
-			{loading ? (
-				<CircularProgress color="red"/>
-			) : (
-				<Widget
-					key={weather.cityName}
-					cityName={city}
-					temperature={weather.temperature}
-					iconUrl={weather.iconUrl}
-				/>
-			)}
-		</div>
-	);
+ 
+  return (
+    <div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <Widget
+          key={weather.cityName}
+          cityName={weather.cityName}
+          temperature={weather.temperature}
+          description={weather.description}
+          iconUrl={weather.iconUrl}
+          submitButton={SubmitButton}
+          click={cityUpdate}
+        />
+      )}
+    </div>
+  );
 };
-
+ 
 export default WeatherApp;
+ 
+ 
