@@ -8,39 +8,47 @@ const WeatherApp = () => {
 	const [weather, setWeather] = useState([]);
 	const [city, setCity] = useState("Helsinki");
 	const [loading, setLoading] = useState([true]);
-	useEffect(() => {
-		const fetchWeatherData = async () => {
-			try {
-				const response = await axios.get(
-					`http://localhost:5002/weather?city=${city}`
-				);
-				setWeather(response.data);
 
-			} catch (error) {
-				console.error("Error fetching data:", error);
-			}
-			finally {
-				setLoading(false);
-			}
-		};
+	const fetchWeatherData = async () => {
+		try {
+			const response = await axios.get(
+				`http://localhost:5002/weather?city=${city}`
+			);
+			setWeather(response.data);
+			setLoading(false);
+		} catch (error) {
+			console.error("Error fetching data:", error);
+			setLoading(false);
+		}
+	};
+
+	const SubmitButton = () => {
 		fetchWeatherData();
-	}, []);
+	};
 
-	const handleChanges = (e) => {
+	const cityUpdate = (e) => {
+		e.preventDefault();
 		setCity(e.target.value);
 	};
-	console.log(weather);
+
+	useEffect(() => {
+		fetchWeatherData(city);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<div>
 			{loading ? (
-				<CircularProgress color="red"/>
+				<CircularProgress sx={{ color: "#aa3030" }} />
 			) : (
 				<Widget
 					key={weather.cityName}
-					cityName={city}
+					cityName={weather.cityName}
 					temperature={weather.temperature}
+					description={weather.description}
 					iconUrl={weather.iconUrl}
+					submitButton={SubmitButton}
+					click={cityUpdate}
 				/>
 			)}
 		</div>
@@ -48,3 +56,4 @@ const WeatherApp = () => {
 };
 
 export default WeatherApp;
+

@@ -1,14 +1,22 @@
-import React from "react";
 import {
   Box,
   Typography,
   Card,
   CardContent,
   CardMedia,
-  Grid,
-} from "@mui/material";
+  Button,
+  TextField,
 
-function Widget({ cityName, temperature, description, iconUrl }) {
+} from "@mui/material";
+ 
+function Widget({
+  cityName,
+  temperature,
+  description,
+  iconUrl,
+  submitButton,
+  click,
+}) {
   return (
     <Box
       sx={{
@@ -25,7 +33,7 @@ function Widget({ cityName, temperature, description, iconUrl }) {
           padding: 1.2,
           marginBottom: 3,
           borderRadius: 1,
-          backgroundColor: "grey.300",
+          backgroundColor: "#6eb9ee",
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -33,6 +41,7 @@ function Widget({ cityName, temperature, description, iconUrl }) {
         </Typography>
         <Box
           sx={{
+            height: "70px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -42,16 +51,17 @@ function Widget({ cityName, temperature, description, iconUrl }) {
           <Typography variant="h3" sx={{ marginRight: 1 }}>
             <img src={iconUrl} alt="" />
           </Typography>
-          <Typography variant="h5">{temperature}°C</Typography>
         </Box>
+        <Typography variant="h5">{temperature}°C</Typography>
         <Typography>{description}</Typography>
-        <input type="text" placeholder="Enter City Name" />
+        <TextField label="Search City" variant="outlined" onChange={click} />
+        <Button onClick={submitButton}>Search</Button>
       </Box>
-
+ 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
-
+ 
       <Card
         sx={{
           display: "flex",
@@ -79,11 +89,11 @@ function Widget({ cityName, temperature, description, iconUrl }) {
           }}
         />
       </Card>
-
+ 
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Watch the news on YouTube
       </Typography>
-
+ 
       <Card
         sx={{
           display: "flex",
@@ -112,5 +122,5 @@ function Widget({ cityName, temperature, description, iconUrl }) {
     </Box>
   );
 }
-
+ 
 export default Widget;

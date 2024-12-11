@@ -55,7 +55,7 @@ const LoginPage = () => {
 				User
 			</Button>
 			<Typography variant="body2" sx={{ margin: "20px 0" }}>
-				<a href="/register" style={{ textDecoration: "none", color: "red" }}>
+				<a href="/register" style={{ textDecoration: "none", color: "#aa3030" }}>
 					Register
 				</a>
 			</Typography>
