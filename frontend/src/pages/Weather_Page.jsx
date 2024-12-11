@@ -35,23 +35,20 @@ const WeatherApp = () => {
     fetchWeatherData(city);
   }, []);
 
-  return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <Widget
-          key={weather.cityName}
-          cityName={weather.cityName}
-          temperature={weather.temperature}
-          description={weather.description}
-          iconUrl={weather.iconUrl}
-          submitButton={SubmitButton}
-          click={cityUpdate}
-        />
-      )}
-    </div>
-  );
+	return (
+		<div>
+			{loading ? (
+				<CircularProgress color="red"/>
+			) : (
+				<Widget
+					key={weather.cityName}
+					cityName={city}
+					temperature={weather.temperature}
+					iconUrl={weather.iconUrl}
+				/>
+			)}
+		</div>
+	);
 };
 
 export default WeatherApp;

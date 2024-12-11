@@ -1,4 +1,4 @@
-import Articles from "../components/Article/It_articles";
+import Articles from "../components/Article/Articles";
 import Footer from "../components/Footer/footer";
 import WeatherApp from "../pages/Weather_Page";
 const Home_Page = () => {

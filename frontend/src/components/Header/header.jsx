@@ -13,7 +13,7 @@ const Header = ({ onClickCategory }) => {
                 padding: '8px 20px',
                 marginBottom: '35px',
                 backgroundColor: '#e6e6e6',
-                color: '#c83131',
+                color: '#aa3030',
 
             }}
         >
@@ -122,7 +122,7 @@ const Header = ({ onClickCategory }) => {
             {/* Login Section */}
             <NavLink to='/Login'>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
-                    <AccountCircle fontSize="large" sx={{ mx: "10px" }} />
+                    <AccountCircle fontSize="large" sx={{ mx: "10px", color:"#aa3030" }} />
                     <Typography variant="h6" sx={{ color: '#191919', fontWeight: 'bold' }}>
                         Login
                     </Typography>
