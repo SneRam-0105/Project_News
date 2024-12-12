@@ -58,14 +58,14 @@ function Widget({
         <Button onClick={submitButton}>Search</Button>
       </Box>
 
-
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
-        Watch the news on YouTube
+      {/* <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+        Trending News
       </Typography>
-
+ 
       <Card
         sx={{
           display: "flex",
+          marginBottom: 2,
           boxShadow: 1,
           borderRadius: 1,
           backgroundColor: "grey.300",
@@ -73,7 +73,8 @@ function Widget({
       >
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography variant="body2">
-            Nokia acquires Rapid technology and R&D unit
+            Indian tech services firms have set up innovation and delivery
+            centres
           </Typography>
         </CardContent>
         <CardMedia
@@ -82,12 +83,26 @@ function Widget({
           alt="Card Image"
           sx={{
             width: 120,
-            height: 120,
+            height: 155,
             borderRadius: 1,
-            objectFit: "cover",
+            objectFit: "inherit",
           }}
         />
+      </Card> */}
+
+      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        Watch the news on YouTube
+      </Typography>
+
+      <Card
+
+      >
+        <CardContent sx={{ flexGrow: 1 }}>
+
+        </CardContent>
+        <iframe width="500" height="350" src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </Card>
+
     </Box>
   );
 }

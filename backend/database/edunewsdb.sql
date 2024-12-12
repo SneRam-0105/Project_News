@@ -14,7 +14,7 @@ create table articles(
     articleId integer not null primary key,
     article_title varchar(25) not null,
     article_description varchar(300) not null,
-    article_image varchar(20)   
+    article_image varchar(100)   
 );
 
 
@@ -35,7 +35,7 @@ VALUES
 
 INSERT INTO articles (articleId, article_title, article_description, article_image)
 VALUES 
-(1, 'AI in Education', 'The impact of artificial intelligence in modern education.', 'ai_education.jpg'),
+(1, 'AI in Education', 'The impact of artificial intelligence in modern education.', 'https://shorturl.at/qjIRr'),
 (2, 'Online Learning Trends', 'Exploring the rapid growth of online education platforms.', 'online_learning.jpg'),
 (3, 'Sustainability', 'How engineering students are embracing sustainability.', 'sustainability.jpg'),
 (4, 'Mental Health', 'Addressing mental health issues among students.', 'mental_health.jpg'),
@@ -48,4 +48,3 @@ VALUES
 ('contact@artshub.com', '789 Arts Blvd, City C', '34567890123'),
 ('help@techworld.com', '101 Tech Park, City D', '45678901234'),
 ('info@business.com', '202 Business Ave, City E', '56789012345');
-
