@@ -46,8 +46,9 @@
 
 .aside {
   grid-area: right;
-  padding: 5rem 1rem;
-  width: 310px;
+  padding: 4rem 2rem;
+  width: 400px;
+  margin-left: 1rem;
 }
 
 .footer {
