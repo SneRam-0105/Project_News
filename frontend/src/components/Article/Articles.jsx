@@ -1,7 +1,7 @@
 import "./Articles.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Container, Modal, Box } from "@mui/material";
+import { Button, CircularProgress, Container, Modal, Box } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
 
 function Articles() {
@@ -9,6 +9,8 @@ function Articles() {
 	const [businessNews, setBusinessNews] = useState([]);
 	const [educationNews, setEducationNews] = useState([]);
 	const [selectedArticle, setSelectedArticle] = useState(null);
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const fetchNews = async () => {
@@ -22,7 +24,10 @@ function Articles() {
 				const educationResponse = await axios.get("http://localhost:5002/Homepage/Education/articles");
 				setEducationNews(educationResponse.data.slice(0, 3));
 			} catch (error) {
-				console.error("Error fetching news:", error);
+				setError("Error fetching news:", error.message);
+			}
+			finally {
+				setLoading(false)
 			}
 		};
 
@@ -39,59 +44,65 @@ function Articles() {
 
 	return (
 		<div className="main-section">
-			{/* IT Section */}
-			<Container className="section">
-				<div className="section-header">Information Technology</div>
-				{itNews?.map((article) => (
-					<div className="card" key={article.id}>
-						<Button onClick={() => handleCardClick(article)}>
-							<div className="card-content" style={{ display: "flex", flexDirection: "column" }}>
-								<h6>{article.title}</h6>
-								{/* <p style={{ marginTop: "10px" }}>{article.description}</p> */}
-							</div>
-							<div className="card-image">
-								<img src={article.urlToImage || defaultImage} alt="Card Image" />
-							</div>
-						</Button>
-					</div>
-				))}
-			</Container>
+			{error ? <p>{error}</p> : loading ? <CircularProgress sx={{ color: "#aa3030" }} /> :
+				<>
+					<Container className="section">
+						<h4 className="section-header">Information Technology</h4>
 
-			{/* Business Section */}
-			<Container className="section">
-				<div className="section-header">Business</div>
-				{businessNews?.map((article) => (
-					<div className="card" key={article.id}>
-						<Button onClick={() => handleCardClick(article)}>
-							<div className="card-content">
-								<h6>{article.title}</h6>
-								{/* <p>{article.description}</p> */}
+						{itNews?.map((article) => (
+							<div className="card" key={article.id}>
+								<Button onClick={() => handleCardClick(article)}>
+									<div className="card-content" style={{ display: "flex", flexDirection: "column" }}>
+										<h6>{article.title}</h6>
+										{/* <p style={{ marginTop: "10px" }}>{article.description}</p> */}
+									</div>
+									<div className="card-image">
+										<img src={article.urlToImage || defaultImage} alt="Card Image" />
+									</div>
+								</Button>
 							</div>
-							<div className="card-image">
-								<img src={article.urlToImage || defaultImage} alt="Card Image" />
-							</div>
-						</Button>
-					</div>
-				))}
-			</Container>
+						))}
+					</Container>
 
-			{/* Education Section */}
-			<Container className="section">
-				<div className="section-header">Education</div>
-				{educationNews?.map((article, index) => (
-					<div className="card" key={index}>
-						<Button onClick={() => handleCardClick(article)}>
-							<div className="card-content">
-								<h6>{article.article_title}</h6>
-								{/* <p>{article.article_description}</p> */}
+					{/* Business Section */}
+					<Container className="section">
+						<div className="section-header">Business</div>
+						{businessNews?.map((article) => (
+							<div className="card" key={article.id}>
+								<Button onClick={() => handleCardClick(article)}>
+									<div className="card-content">
+										<h6>{article.title}</h6>
+										{/* <p>{article.description}</p> */}
+									</div>
+									<div className="card-image">
+										<img src={article.urlToImage || defaultImage} alt="Card Image" />
+									</div>
+								</Button>
 							</div>
-							<div className="card-image">
-								<img src={article.article_image || defaultImage} alt="Card Image" />
+						))}
+					</Container>
+
+					{/* Education Section */}
+					<Container className="section">
+						<div className="section-header">Education</div>
+						{educationNews?.map((article, index) => (
+							<div className="card" key={index}>
+								<Button onClick={() => handleCardClick(article)}>
+									<div className="card-content">
+										<h6>{article.article_title}</h6>
+										{/* <p>{article.article_description}</p> */}
+									</div>
+									<div className="card-image">
+										<img src={article.article_image || defaultImage} alt="Card Image" />
+									</div>
+								</Button>
 							</div>
-						</Button>
-					</div>
-				))}
-			</Container>
+						))}
+					</Container>
+				</>
+			}
+
+
 
 			{/* Modal */}
 			<Modal open={!!selectedArticle}>
@@ -111,7 +122,9 @@ function Articles() {
 					)}
 				</Box>
 			</Modal>
+
 		</div>
+
 	);
 }
 
