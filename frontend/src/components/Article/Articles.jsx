@@ -1,13 +1,15 @@
 import "./Articles.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Container } from "@mui/material";
+import { Button, CircularProgress, Container } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
 
 function Articles() {
 	const [itNews, setITNews] = useState([]);
 	const [businessNews, setBusinessNews] = useState([]);
 	const [educationNews, setEducationNews] = useState([]);
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		const fetchNews = async () => {
@@ -21,7 +23,10 @@ function Articles() {
 				const educationResponse = await axios.get("http://localhost:5002/Homepage/Education/articles");
 				setEducationNews(educationResponse.data.slice(0, 3));
 			} catch (error) {
-				console.error("Error fetching news:", error);
+				setError("Error fetching news:", error.message);
+			}
+			finally {
+				setLoading(false)
 			}
 		};
 
@@ -31,9 +36,10 @@ function Articles() {
 
 	return (
 		<div className="main-section">
-
+			{error ? <p>{error}</p> : loading ? <CircularProgress sx={{ color: "#aa3030" }} /> : 
+<>
 			<Container className="section">
-				<div className="section-header">Information Technology</div>
+				<h4 className="section-header">Information Technology</h4>
 
 				{itNews?.map((article) => (
 					<div className="card" key={article.id}>
@@ -81,10 +87,10 @@ function Articles() {
 							</div></Button>
 
 					</div>
-				))
-				}
+				))}
 			</Container >
-
+</>
+			}
 		</div >
 	);
 }
