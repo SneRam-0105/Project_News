@@ -8,7 +8,7 @@ import {
   TextField,
 
 } from "@mui/material";
- 
+
 function Widget({
   cityName,
   temperature,
@@ -57,8 +57,8 @@ function Widget({
         <TextField label="Search City" variant="outlined" onChange={click} />
         <Button onClick={submitButton}>Search</Button>
       </Box>
- 
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+
+      {/* <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
  
@@ -88,39 +88,23 @@ function Widget({
             objectFit: "inherit",
           }}
         />
-      </Card>
- 
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+      </Card> */}
+
+      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
         Watch the news on YouTube
       </Typography>
- 
+
       <Card
-        sx={{
-          display: "flex",
-          boxShadow: 1,
-          borderRadius: 1,
-          backgroundColor: "grey.300",
-        }}
+
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="body2">
-            Nokia acquires Rapid technology and R&D unit
-          </Typography>
+
         </CardContent>
-        <CardMedia
-          component="img"
-          image="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM="
-          alt="Card Image"
-          sx={{
-            width: 120,
-            height: 120,
-            borderRadius: 1,
-            objectFit: "cover",
-          }}
-        />
+        <iframe width="500" height="350" src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </Card>
+
     </Box>
   );
 }
- 
+
 export default Widget;
