@@ -17,14 +17,14 @@ const Header = ({ onClickCategory }) => {
 
 			}}
 		>
-			{/* Logo Section */}
+
 			<NavLink to='/'>
 				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 65 }}>
 					<img src={logo} alt="Logo" style={{ height: '60px', width: 'auto' }} />
 				</Box>
 			</NavLink>
 
-			{/* Navbar Section */}
+
 			<Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
 				<ul
 					style={{
@@ -34,7 +34,7 @@ const Header = ({ onClickCategory }) => {
 						padding: 0,
 					}}
 				>
-					{/* IT Category */}
+
 					<NavLink
 						to="/IT"
 						end
@@ -119,7 +119,6 @@ const Header = ({ onClickCategory }) => {
 				</ul>
 			</Box>
 
-			{/* Login Section */}
 			<NavLink to='/Login'>
 				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
 					<AccountCircle fontSize="large" sx={{ mx: "10px", color: "#aa3030" }} />
