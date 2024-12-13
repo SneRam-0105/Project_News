@@ -1,16 +1,27 @@
-import "./Articles.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, CircularProgress, Container, Modal, Box } from "@mui/material";
+import {
+	Button,
+	CircularProgress,
+	Container,
+	Grid,
+	Typography,
+	Card,
+	CardContent,
+	CardMedia,
+	Modal,
+	Box,
+} from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
+import { Link } from "react-router-dom";
 
 function Articles() {
 	const [itNews, setITNews] = useState([]);
 	const [businessNews, setBusinessNews] = useState([]);
 	const [educationNews, setEducationNews] = useState([]);
 	const [selectedArticle, setSelectedArticle] = useState(null);
-	const [error, setError] = useState(null)
-	const [loading, setLoading] = useState(true)
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchNews = async () => {
@@ -18,16 +29,19 @@ function Articles() {
 				const itResponse = await axios.get("http://localhost:5002/Homepage/IT");
 				setITNews(itResponse.data.articles.slice(0, 3));
 
-				const businessResponse = await axios.get("http://localhost:5002/Homepage/Business");
+				const businessResponse = await axios.get(
+					"http://localhost:5002/Homepage/Business"
+				);
 				setBusinessNews(businessResponse.data.articles.slice(0, 3));
 
-				const educationResponse = await axios.get("http://localhost:5002/Homepage/Education/articles");
+				const educationResponse = await axios.get(
+					"http://localhost:5002/Homepage/Education/articles"
+				);
 				setEducationNews(educationResponse.data.slice(0, 3));
 			} catch (error) {
-				setError("Error fetching news:", error.message);
-			}
-			finally {
-				setLoading(false)
+				setError("Error fetching news: " + error.message);
+			} finally {
+				setLoading(false);
 			}
 		};
 
@@ -36,6 +50,8 @@ function Articles() {
 
 	const handleCardClick = (article) => {
 		setSelectedArticle(article);
+
+
 	};
 
 	const handleCloseModal = () => {
@@ -43,89 +59,189 @@ function Articles() {
 	};
 
 	return (
-		<div className="main-section">
-			{error ? <p>{error}</p> : loading ? <CircularProgress sx={{ color: "#aa3030" }} /> :
-				<>
-					<Container className="section">
-						<h4 className="section-header">Information Technology</h4>
+		<div>
+			{error ? (
+				<Typography color="error" align="center" sx={{ marginY: 4 }}>
+					{error}
+				</Typography>
+			) : loading ? (
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						height: "100vh",
+					}}
+				>
+					<CircularProgress sx={{ color: "#aa3030" }} />
+				</Box>
+			) : (
+				<Container sx={{ marginY: 4 }}>
+					<Grid container spacing={4} sx={{ alignItems: "stretch" }}>
 
-						{itNews?.map((article) => (
-							<div className="card" key={article.id}>
-								<Button onClick={() => handleCardClick(article)}>
-									<div className="card-content" style={{ display: "flex", flexDirection: "column" }}>
-										<h6>{article.title}</h6>
-										{/* <p style={{ marginTop: "10px" }}>{article.description}</p> */}
-									</div>
-									<div className="card-image">
-										<img src={article.urlToImage || defaultImage} alt="Card Image" />
-									</div>
-								</Button>
-							</div>
-						))}
-					</Container>
+						{/* IT News Section */}
+						<Grid item xs={12} sm={4}>
+							<Typography variant="h5" gutterBottom>
+								Information Technology
+							</Typography>
+							{itNews.map((article, index) => (
+								<Card
+									key={index}
+									onClick={() => handleCardClick(article)}
+									sx={{
+										cursor: "pointer",
+										marginBottom: 3,
+										display: "flex",
+										flexDirection: "column",
+										height: 300,
+									}}
+								>
+									<CardMedia
+										component="img"
+										image={article.urlToImage || defaultImage}
+										alt={article.title || "News Image"}
+										sx={{
+											height: 180,
+											objectFit: "cover",
+											borderRadius: "4px 4px 0 0",
+										}}
+									/>
+									<CardContent sx={{ flex: 1 }}>
+										<Typography variant="h6" gutterBottom sx={{ fontSize: "1rem" }}>
+											{article.title}
+										</Typography>
+									</CardContent>
+								</Card>
+							))}
+						</Grid>
 
-					{/* Business Section */}
-					<Container className="section">
-						<div className="section-header">Business</div>
-						{businessNews?.map((article) => (
-							<div className="card" key={article.id}>
-								<Button onClick={() => handleCardClick(article)}>
-									<div className="card-content">
-										<h6>{article.title}</h6>
-										{/* <p>{article.description}</p> */}
-									</div>
-									<div className="card-image">
-										<img src={article.urlToImage || defaultImage} alt="Card Image" />
-									</div>
-								</Button>
-							</div>
-						))}
-					</Container>
+						{/* Business News Section */}
+						<Grid item xs={12} sm={4}>
+							<Typography variant="h5" gutterBottom>
+								Business
+							</Typography>
+							{businessNews.map((article, index) => (
+								<Card
+									key={index}
+									onClick={() => handleCardClick(article)}
+									sx={{
+										cursor: "pointer",
+										marginBottom: 3,
+										display: "flex",
+										flexDirection: "column",
+										height: 300,
+									}}
+								>
+									<CardMedia
+										component="img"
+										image={article.urlToImage || defaultImage}
+										alt={article.title || "News Image"}
+										sx={{
+											height: 180,
+											objectFit: "cover",
+											borderRadius: "4px 4px 0 0",
+										}}
+									/>
+									<CardContent sx={{ flex: 1 }}>
+										<Typography variant="h6" gutterBottom sx={{ fontSize: "1rem" }}>
+											{article.title}
+										</Typography>
+									</CardContent>
+								</Card>
+							))}
+						</Grid>
 
-					{/* Education Section */}
-					<Container className="section">
-						<div className="section-header">Education</div>
-						{educationNews?.map((article, index) => (
-							<div className="card" key={index}>
-								<Button onClick={() => handleCardClick(article)}>
-									<div className="card-content">
-										<h6>{article.article_title}</h6>
-										{/* <p>{article.article_description}</p> */}
-									</div>
-									<div className="card-image">
-										<img src={article.article_image || defaultImage} alt="Card Image" />
-									</div>
-								</Button>
-							</div>
-						))}
-					</Container>
-				</>
-			}
+						{/* Education News Section */}
+						<Grid item xs={12} sm={4}>
+							<Typography variant="h5" gutterBottom>
+								Education
+							</Typography>
+							{educationNews.map((article, index) => (
+								<Card
+									key={index}
+									onClick={() => handleCardClick(article)}
+									sx={{
+										cursor: "pointer",
+										marginBottom: 3,
+										display: "flex",
+										flexDirection: "column",
+										height: 300,
+									}}
+								>
+									<CardMedia
+										component="img"
+										image={article.article_image || defaultImage}
+										alt={article.article_title || "News Image"}
+										sx={{
+											height: 180,
+											objectFit: "cover",
+											borderRadius: "4px 4px 0 0",
+										}}
+									/>
+									<CardContent sx={{ flex: 1 }}>
+										<Typography variant="h6" gutterBottom sx={{ fontSize: "1rem" }}>
+											{article.article_title}
+										</Typography>
+									</CardContent>
+								</Card>
+							))}
+						</Grid>
+					</Grid>
+				</Container>
+			)}
 
-
-
-			{/* Modal */}
-			<Modal open={!!selectedArticle}>
-				<Box className="modal-box">
+			<Modal open={selectedArticle} onClose={handleCloseModal}>
+				<Box
+					sx={{
+						position: "absolute",
+						top: "50%",
+						left: "50%",
+						width: 400,
+						bgcolor: "background.paper",
+						boxShadow: 24,
+						transform: "translate(-50%, -50%)",
+						p: 4,
+					}}
+				>
 					{selectedArticle && (
 						<>
-							<button onClick={handleCloseModal}>x</button>
-							<h2>{selectedArticle.title || selectedArticle.article_title}</h2>
-							<p>{selectedArticle.description || selectedArticle.article_description}</p>
+							<Typography variant="h6" gutterBottom>
+								{selectedArticle.title || selectedArticle.article_title}
+							</Typography>
+							<Typography variant="subtitle1">
+								{selectedArticle.description}
+							</Typography>
+							<Typography
+								onClick={() => window.open(selectedArticle.url, '_blank')}
+								style={{ textDecoration: 'none', color: '#aa3030', cursor: 'pointer' }}
+							>
+								Read More
+							</Typography>
 							<img
-								src={selectedArticle.urlToImage || selectedArticle.article_image || defaultImage}
-								alt="Modal Image"
+								src={
+									selectedArticle.urlToImage ||
+									selectedArticle.article_image ||
+									defaultImage
+								}
+								alt="Modal"
 								style={{ width: "100%", marginTop: "20px" }}
 							/>
-
+							<Button
+								onClick={handleCloseModal}
+								variant="contained"
+								sx={{
+									marginTop: 2,
+									backgroundColor: "#aa3030",
+								}}
+							>
+								Close
+							</Button>
 						</>
 					)}
 				</Box>
 			</Modal>
-
 		</div>
-
 	);
 }
 
-export default Articles;
+export default Articles;	
