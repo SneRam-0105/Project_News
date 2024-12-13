@@ -79,9 +79,8 @@ function Articles() {
 				<Container sx={{ marginY: 4 }}>
 					<Grid container spacing={4} sx={{ alignItems: "stretch" }}>
 
-						{/* IT News Section */}
 						<Grid item xs={12} sm={4}>
-							<Typography variant="h5" gutterBottom>
+							<Typography variant="h6" gutterBottom>
 								Information Technology
 							</Typography>
 							{itNews.map((article, index) => (
@@ -115,9 +114,8 @@ function Articles() {
 							))}
 						</Grid>
 
-						{/* Business News Section */}
 						<Grid item xs={12} sm={4}>
-							<Typography variant="h5" gutterBottom>
+							<Typography variant="h6" gutterBottom>
 								Business
 							</Typography>
 							{businessNews.map((article, index) => (
@@ -151,9 +149,8 @@ function Articles() {
 							))}
 						</Grid>
 
-						{/* Education News Section */}
 						<Grid item xs={12} sm={4}>
-							<Typography variant="h5" gutterBottom>
+							<Typography variant="h6" gutterBottom>
 								Education
 							</Typography>
 							{educationNews.map((article, index) => (
