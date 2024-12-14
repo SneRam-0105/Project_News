@@ -35,7 +35,7 @@ function Widget({
           backgroundColor: "#d4e5fa",
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
           {cityName}
         </Typography>
         <Box
@@ -55,14 +55,16 @@ function Widget({
           </Typography>
         </Box>
         <Typography variant="h5">{temperature}°C</Typography>
-        <Typography sx={{ marginRight: 1 }}>{description}</Typography>
+        <Typography variant="h6">{description}</Typography>
         <TextField
-          label="Search City"
+          label="Enter City"
           variant="outlined"
           onChange={click}
           sx={{ width: "200px" }}
         />
-        <Button onClick={submitButton}>Search</Button>
+        <Button onClick={submitButton} variant="h3" sx={{ color: "#aa3030" }}>
+          Search
+        </Button>
       </Box>
 
       {/* <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
