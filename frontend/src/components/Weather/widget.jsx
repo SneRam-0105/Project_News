@@ -6,7 +6,6 @@ import {
   CardMedia,
   Button,
   TextField,
-
 } from "@mui/material";
 
 function Widget({
@@ -33,7 +32,7 @@ function Widget({
           padding: 1.2,
           marginBottom: 3,
           borderRadius: 1,
-          backgroundColor: "#6eb9ee",
+          backgroundColor: "#d4e5fa",
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -41,27 +40,35 @@ function Widget({
         </Typography>
         <Box
           sx={{
-            height: "70px",
+            height: "40px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: 1,
+            marginBottom: "10px",
           }}
         >
-          <Typography variant="h3" sx={{ marginRight: 1 }}>
+          <Typography
+            variant="h3"
+            sx={{ marginRight: 1, width: "60px", height: "195px" }}
+          >
             <img src={iconUrl} alt="" />
           </Typography>
         </Box>
         <Typography variant="h5">{temperature}°C</Typography>
-        <Typography>{description}</Typography>
-        <TextField label="Search City" variant="outlined" onChange={click} />
+        <Typography sx={{ marginRight: 1 }}>{description}</Typography>
+        <TextField
+          label="Search City"
+          variant="outlined"
+          onChange={click}
+          sx={{ width: "200px" }}
+        />
         <Button onClick={submitButton}>Search</Button>
       </Box>
 
       {/* <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
- 
+
       <Card
         sx={{
           display: "flex",
@@ -94,15 +101,19 @@ function Widget({
         Watch the news on YouTube
       </Typography>
 
-      <Card
-
-      >
-        <CardContent sx={{ flexGrow: 1 }}>
-
-        </CardContent>
-        <iframe width="500" height="350" src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <Card>
+        <CardContent sx={{ flexGrow: 1 }}></CardContent>
+        <iframe
+          width="500"
+          height="350"
+          src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </Card>
-
     </Box>
   );
 }
