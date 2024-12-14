@@ -105,6 +105,7 @@ const ArticleCard = ({ title, author, description, url, urlToImage, date, catego
                     color: "#aa3030",
                     "&:hover": {
                         backgroundColor: "#aa3030",
+                        color: "#fff",
                     },
                 }}
             >
