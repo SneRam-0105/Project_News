@@ -102,13 +102,18 @@ function Widget({
         Watch the news on YouTube
       </Typography>
 
-      <Card
-
-      >
-        <CardContent sx={{ flexGrow: 1 }}>
-
-        </CardContent>
-        <iframe width="500" height="350" src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <Card>
+        <CardContent sx={{ flexGrow: 1 }}></CardContent>
+        <iframe
+          width="500"
+          height="350"
+          src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </Card>
     </Box>
   );
