@@ -27,7 +27,7 @@ const Business_Page = () => {
 				<CircularProgress />
 			) : (
 				<div style={{ marginBottom: "100px" }}><Grid container spacing={2}>
-					{articles.map((news, index) => (
+					{articles?.map((news, index) => (
 						<Grid
 							item
 							key={news.id}

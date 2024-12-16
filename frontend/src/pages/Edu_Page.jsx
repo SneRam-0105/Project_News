@@ -58,7 +58,7 @@ const Education = () => {
 			</Typography>
 
 			<Grid2 container spacing={4}>
-				{articles.map((article) => (
+				{articles?.map((article) => (
 					<Grid2 item xs={12} sm={6} md={4} key={article.articleId}>
 						<Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 							<CardMedia
@@ -90,7 +90,7 @@ const Education = () => {
 			</Typography>
 
 			<Grid2 container spacing={4}>
-				{contactInfo.map((info) => (
+				{contactInfo?.map((info) => (
 					<Grid2 item xs={12} sm={6} md={4} key={info.email}>
 						<Card sx={{ boxShadow: 3, borderRadius: 2, }}>
 							<CardContent>

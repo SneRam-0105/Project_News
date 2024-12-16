@@ -31,7 +31,7 @@ const IT_Page = () => {
 				<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
 					{articles.length > 0 && (
 						<>
-							{articles.map((news, index) => {
+							{articles?.map((news, index) => {
 								const isSpecial = index % 6 === 0;
 								return (
 									<Grid
