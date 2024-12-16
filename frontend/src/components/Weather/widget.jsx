@@ -40,7 +40,7 @@ function Widget({
         </Typography>
         <Box
           sx={{
-            height: "40px",
+            height: "60px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -49,25 +49,31 @@ function Widget({
         >
           <Typography
             variant="h3"
-            sx={{ marginRight: 1, width: "60px", height: "195px" }}
+            sx={{ marginRight: 1, width: "40px", height: "195px" }}
           >
-            <img src={iconUrl} alt="" />
+            <img src={iconUrl} alt="" style={{ height: "250px" }} />
           </Typography>
         </Box>
         <Typography variant="h5">{temperature}°C</Typography>
         <Typography variant="h6">{description}</Typography>
-        <TextField
-          label="Enter City"
-          variant="outlined"
-          onChange={click}
-          sx={{ width: "200px" }}
-        />
-        <Button onClick={submitButton} variant="h3" sx={{ color: "#aa3030" }}>
-          Search
-        </Button>
+        <div style={{ display: "flex" }}>
+          <TextField
+            label="Enter City"
+            variant="outlined"
+            onChange={click}
+            sx={{ width: "200px" }}
+          />
+          <Button
+            onClick={submitButton}
+            variant="h3"
+            sx={{ color: "#aa3030", ml: "10px" }}
+          >
+            Search
+          </Button>
+        </div>
       </Box>
 
-      {/* <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
 
@@ -97,7 +103,7 @@ function Widget({
             objectFit: "inherit",
           }}
         />
-      </Card> */}
+      </Card>
 
       <Typography variant="h6" sx={{ fontWeight: "bold" }}>
         Watch the news on YouTube
