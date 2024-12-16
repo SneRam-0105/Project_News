@@ -3,7 +3,6 @@ import {
   Typography,
   Card,
   CardContent,
-  CardMedia,
   Button,
   TextField,
 } from "@mui/material";
@@ -110,9 +109,9 @@ function Widget({
           height="350"
           src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
       </Card>
