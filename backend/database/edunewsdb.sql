@@ -41,7 +41,7 @@ VALUES
 ('info@business.com', '202 Business Ave, City E', '56789012345');
 
 --update statements (DO NOT EXECUTE)
- update articles set article_image = 'https://shorturl.at/qjIRr' where articleId=1;
+ update articles set article_image = 'https://shorturl.at/1UIac' where articleId=1;
  update articles set article_image = 'https://shorturl.at/24r2a' where articleId=2;
  update articles set article_image = 'https://shorturl.at/VDd5k' where articleId=3;
 

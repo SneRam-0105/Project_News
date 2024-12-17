@@ -3,6 +3,7 @@ import { Button, Typography, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logo from '../../assets/LOGO_black.png';
 
+
 const Header = ({ onClickCategory }) => {
 	return (
 		<Box
@@ -17,6 +18,7 @@ const Header = ({ onClickCategory }) => {
 
 			}}
 		>
+
 
 			<NavLink to='/'>
 				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 65 }}>
@@ -114,6 +116,7 @@ const Header = ({ onClickCategory }) => {
 							>
 								Education
 							</Button>
+
 						</li>
 					</NavLink>
 				</ul>
