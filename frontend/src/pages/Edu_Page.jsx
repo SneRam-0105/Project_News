@@ -189,6 +189,29 @@ const Education = () => {
 						</Grid2>
 					))}
 				</Grid2>
+				<Typography variant="h4" sx={{ mt: 6, mb: 2, fontWeight: 'bold' }}>
+					Contact Information
+				</Typography>
+
+				<Grid2 container spacing={4}>
+					{contactInfo.map((info) => (
+						<Grid2 item xs={12} sm={6} md={4} key={info.email}>
+							<Card sx={{ boxShadow: 3, borderRadius: 2, }}>
+								<CardContent>
+									<Typography variant="h6" color="darkred">
+										<strong>Email:</strong> {info.email}
+									</Typography>
+									<Typography>
+										<strong>Address:</strong> {info.address}
+									</Typography>
+									<Typography>
+										<strong>Phone:</strong> {info.phone_number}
+									</Typography>
+								</CardContent>
+							</Card>
+						</Grid2>
+					))}
+				</Grid2>
 
 
 			</Box></div>
