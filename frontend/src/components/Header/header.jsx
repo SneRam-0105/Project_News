@@ -11,7 +11,6 @@ const Header = ({ onClickCategory }) => {
 				justifyContent: 'space-evenly',
 				alignItems: 'center',
 				padding: '8px 20px',
-				marginBottom: '35px',
 				backgroundColor: '#191919',
 				color: '#aa3030',
 
