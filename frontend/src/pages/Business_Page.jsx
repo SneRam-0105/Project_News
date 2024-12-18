@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Grid, Container, CircularProgress } from "@mui/material";
+import { Grid, Container, CircularProgress, Box, Typography } from "@mui/material";
 import axios from "axios";
 import ArticleCard from "../components/Article/ArticleCard";
 
@@ -22,31 +22,42 @@ const Business_Page = () => {
 	}, []);
 
 	return (
-		<Container>
-			{loading ? (
-				<CircularProgress />
-			) : (
-				<div style={{ marginBottom: "100px" }}><Grid container spacing={2}>
-					{articles.map((news, index) => (
-						<Grid
-							item
-							key={news.id}
-							xs={12}
-							sm={index % 6 === 0 ? 6 : 6}
-							md={index % 5 === 0 ? 8 : 4}
-							sx={{
-								display: "flex",
-								justifyContent: "center",
-							}}
-						>
-							<ArticleCard {...news} />
-						</Grid>
-					))}
-				</Grid></div>
+		<div style={{ marginBottom: "20px" }}>
+			<Box sx={{ padding: 4, background: '#fff' }}>
 
-			)}
-		</Container>
+				<Typography variant="h4" align="center" sx={{
+					color: "#aa3030",
+				}}>
+					Business
+				</Typography>
+				<Container>
+					{loading ? (
+						<CircularProgress />
+					) : (
+						<div style={{ marginBottom: "100px" }}><Grid container spacing={2}>
+							{articles.map((news, index) => (
+								<Grid
+									item
+									key={news.id}
+									xs={12}
+									sm={index % 6 === 0 ? 6 : 6}
+									md={index % 5 === 0 ? 8 : 4}
+									sx={{
+										display: "flex",
+										justifyContent: "center",
+									}}
+								>
+									<ArticleCard {...news} />
+								</Grid>
+							))}
+						</Grid></div>
+
+					)}
+				</Container>
+			</Box>
+		</div>
 	);
+
 };
 
 export default Business_Page;
