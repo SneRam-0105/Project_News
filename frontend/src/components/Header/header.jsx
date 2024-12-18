@@ -1,9 +1,18 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import { Button, Typography, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
-import logo from '../../assets/LOGO_black.png';
+import logoForDark from '../../assets/LOGO_black.png';
+import logoForBright from '../../assets/LOGO.png';
+import ToggleDarkMode from '../Elements/DarkModeSwitch.jsx';
 
 const Header = ({ onClickCategory }) => {
+	const [isDarkMode, setIsDarkMode] = useState(false);
+
+	const handleThemeChange = () => {
+		setIsDarkMode((prevMode) => !prevMode);
+	};
+
 	return (
 		<Box
 			sx={{
@@ -12,17 +21,27 @@ const Header = ({ onClickCategory }) => {
 				alignItems: 'center',
 				padding: '8px 20px',
 				marginBottom: '35px',
-				backgroundColor: '#191919',
-				color: '#aa3030',
-
+				backgroundColor: isDarkMode ? '#191919' : '#f0f0f0',
 			}}
 		>
 
-			<NavLink to='/'>
-				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 65 }}>
-					<img src={logo} alt="Logo" style={{ height: '60px', width: 'auto' }} />
-				</Box>
-			</NavLink>
+			<NavLink to="/">
+  <Box
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 65,
+    }}
+  >
+    <img
+      src={isDarkMode ? logoForDark : logoForBright} 
+      alt="Logo"
+      style={{ height: '60px', width: 'auto' }}
+    />
+  </Box>
+</NavLink>
+
 
 
 			<Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
@@ -34,100 +53,63 @@ const Header = ({ onClickCategory }) => {
 						padding: 0,
 					}}
 				>
+					{['IT', 'Business', 'Edu'].map((category, index) => (
+						<NavLink
+							key={index}
+							to={`/${category}`}
+							end
+							style={({ isActive }) => ({
+								textDecoration: "none",
+								color: isActive
+									? "#aa3030"
+									: isDarkMode
+										? "#e6e6e6"
+										: "#191919",
+							})}
+						>
 
-					<NavLink
-						to="/IT"
-						end
-						style={({ isActive }) => ({
-							textDecoration: 'none',
-							color: isActive ? '#aa3030' : '#e6e6e6',
-						})}
-					>
-						<li style={{ margin: '9px 20px' }}>
-							<Button
-								variant="text"
-								onClick={() => onClickCategory('technology')}
-								sx={{
-									color: 'inherit',
-									fontSize: 20,
-									fontWeight: 'bold',
-									textTransform: 'none',
-									'&:hover': {
-										color: '#aa3030',
-									},
-								}}
-							>
-								Information Technology
-							</Button>
-						</li>
-					</NavLink>
+							<li style={{ margin: '9px 20px' }}>
+<Button
+  variant="text"
+  onClick={() => onClickCategory(category.toLowerCase())}
+  sx={{
+    color: 'inherit',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'none',
+    '&:hover': {
+      color: '#aa3030',
+    },
+  }}
+>
+  {category === 'IT' 
+    ? 'Information Technology' 
+    : category === 'Edu' 
+    ? 'Education' 
+    : category}
+</Button>
 
-
-					<NavLink
-						to="/Business"
-						end
-						style={({ isActive }) => ({
-							textDecoration: 'none',
-							color: isActive ? '#aa3030' : '#e6e6e6',
-						})}
-					>
-						<li style={{ margin: '9px 20px' }}>
-							<Button
-								variant="text"
-								onClick={() => onClickCategory('business')}
-								sx={{
-									color: 'inherit',
-									fontSize: 20,
-									fontWeight: 'bold',
-									textTransform: 'none',
-									'&:hover': {
-										color: '#aa3030',
-									},
-								}}
-							>
-								Business
-							</Button>
-						</li>
-					</NavLink>
-
-					<NavLink
-						to="/Edu"
-						end
-						style={({ isActive }) => ({
-							textDecoration: 'none',
-							color: isActive ? '#aa3030' : '#e6e6e6',
-						})}
-					>
-						<li style={{ margin: '9px 20px' }}>
-							<Button
-								variant="text"
-								onClick={() => onClickCategory('education')}
-								sx={{
-									color: 'inherit',
-									fontSize: 20,
-									fontWeight: 'bold',
-									textTransform: 'none',
-									'&:hover': {
-										color: '#aa3030',
-									},
-								}}
-							>
-								Education
-							</Button>
-						</li>
-					</NavLink>
+							</li>
+						</NavLink>
+					))}
 				</ul>
 			</Box>
 
-			<NavLink to='/Login'>
-				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold' }}>
-					<AccountCircle fontSize="large" sx={{ mx: "10px", color: "#aa3030" }} />
-					<Typography variant="h6" sx={{ color: '#e6e6e6', fontWeight: 'bold' }}>
+
+			<ToggleDarkMode handleThemeChange={handleThemeChange} />
+
+
+			<NavLink to="/Login" style={{textDecoration:"none"}}>
+				<Box sx={{
+					display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
+				}}>
+					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
+					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold'}}>
 						Login
 					</Typography>
 				</Box>
 			</NavLink>
-		</Box>
+		</Box >
 	);
 };
 
