@@ -6,25 +6,27 @@ import ArticleCard from "../components/Article/ArticleCard";
 const Business_Page = () => {
 	const [articles, setArticles] = useState([]);
 	const [loading, setLoading] = useState(true);
-
+	const [error, setError] = useState(null);
 	useEffect(() => {
 		axios
 			.get("http://localhost:5002/Homepage/Business")
 			.then((response) => {
 				setArticles(response.data.articles);
-				console.log(response.data.articles);
-				setLoading(false);
 			})
 			.catch((error) => {
-				console.error("Error fetching data:", error);
-				setLoading(false);
-			});
+				setError(`Error fetching data: ${error.message}`);
+
+
+			})
+			.finally(() => {
+				setLoading(false)
+			})
 	}, []);
 
 	return (
-		<Container>
-			{loading ? (
-				<CircularProgress />
+			<Container sx={{minHeight:"100vh", minWidth:"100vh"}}>
+			{error ? <p>{error}</p> : loading ? (
+				<CircularProgress sx={{color:"#aa3030"}}/>
 			) : (
 				<div style={{ marginBottom: "100px" }}><Grid container spacing={2}>
 					{articles?.map((news, index) => (

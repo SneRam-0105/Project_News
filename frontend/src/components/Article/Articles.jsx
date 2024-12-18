@@ -13,7 +13,7 @@ import {
 	Box,
 } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
-import { Link } from "react-router-dom";
+
 
 function Articles() {
 	const [itNews, setITNews] = useState([]);
@@ -39,7 +39,7 @@ function Articles() {
 				);
 				setEducationNews(educationResponse.data.slice(0, 3));
 			} catch (error) {
-				setError("Error fetching news: " + error.message);
+				setError(`Error fetching news: ${error.message}`);
 			} finally {
 				setLoading(false);
 			}
@@ -60,8 +60,8 @@ function Articles() {
 
 	return (
 		<div>
-			{error ? (
-				<Typography color="error" align="center" sx={{ marginY: 4 }}>
+			<Container sx={{minHeight:"100vh", minWidth:"100vh"}}>{error ? (
+				<Typography sx={{ marginY: 4, color:"error", align:"center" }}>
 					{error}
 				</Typography>
 			) : loading ? (
@@ -191,7 +191,7 @@ function Articles() {
 						</Grid>
 					</Grid>
 				</Container>
-			)}
+			)}</Container>
 
 			<Modal open={selectedArticle} onClose={handleCloseModal}>
 				<Box
