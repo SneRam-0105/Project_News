@@ -20,9 +20,6 @@ function Widget({
     <Box
       sx={{
         padding: 1.5,
-        backgroundColor: "#f9f9f9",
-        border: "1.5px solid #ccc",
-        borderRadius: 2,
         maxWidth: 350,
       }}
     >
@@ -49,7 +46,7 @@ function Widget({
         >
           <Typography
             variant="h3"
-            sx={{ marginRight: 1, width: "40px", height: "195px" }}
+            sx={{ marginRight: 1, width: "120px", height: "240px" }}
           >
             <img src={iconUrl} alt="" style={{ height: "250px" }} />
           </Typography>
@@ -98,19 +95,18 @@ function Widget({
           alt="Card Image"
           sx={{
             width: 120,
-            height: 155,
+            height: 200,
             borderRadius: 1,
             objectFit: "inherit",
           }}
         />
       </Card>
-
-      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-        Watch the news on YouTube
-      </Typography>
-
       <Card>
-        <CardContent sx={{ flexGrow: 1 }}></CardContent>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Watch the news on YouTube
+          </Typography>
+        </CardContent>
         <iframe
           width="500"
           height="350"
