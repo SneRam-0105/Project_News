@@ -1,38 +1,38 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {
-	Button,
-	CircularProgress,
-	Container,
-	Grid,
-	Typography,
-	Card,
-	CardContent,
-	CardMedia,
-	Modal,
-	Box,
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Modal,
+  Box,
 } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
 
 
 function Articles() {
-	const [itNews, setITNews] = useState([]);
-	const [businessNews, setBusinessNews] = useState([]);
-	const [educationNews, setEducationNews] = useState([]);
-	const [selectedArticle, setSelectedArticle] = useState(null);
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(true);
+  const [itNews, setITNews] = useState([]);
+  const [businessNews, setBusinessNews] = useState([]);
+  const [educationNews, setEducationNews] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchNews = async () => {
-			try {
-				const itResponse = await axios.get("http://localhost:5002/Homepage/IT");
-				setITNews(itResponse.data.articles.slice(0, 3));
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const itResponse = await axios.get("http://localhost:5002/Homepage/IT");
+        setITNews(itResponse.data.articles.slice(0, 3));
 
-				const businessResponse = await axios.get(
-					"http://localhost:5002/Homepage/Business"
-				);
-				setBusinessNews(businessResponse.data.articles.slice(0, 3));
+        const businessResponse = await axios.get(
+          "http://localhost:5002/Homepage/Business"
+        );
+        setBusinessNews(businessResponse.data.articles.slice(0, 3));
 
 				const educationResponse = await axios.get(
 					"http://localhost:5002/Homepage/Education/articles"
@@ -45,18 +45,16 @@ function Articles() {
 			}
 		};
 
-		fetchNews();
-	}, []);
+    fetchNews();
+  }, []);
 
-	const handleCardClick = (article) => {
-		setSelectedArticle(article);
+  const handleCardClick = (article) => {
+    setSelectedArticle(article);
+  };
 
-
-	};
-
-	const handleCloseModal = () => {
-		setSelectedArticle(null);
-	};
+  const handleCloseModal = () => {
+    setSelectedArticle(null);
+  };
 
 	return (
 		<div>
@@ -247,4 +245,4 @@ function Articles() {
 	);
 }
 
-export default Articles;	
+export default Articles;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Container, Grid, CircularProgress } from "@mui/material";
+import { Container, Grid, CircularProgress} from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
 
 const IT_Page = () => {
