@@ -1,33 +1,36 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
+import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, CircularProgress } from "@mui/material";
 
 const Education = () => {
 	const [faculties, setFaculties] = useState([]);
 	const [articles, setArticles] = useState([]);
-	const [contactInfo, setContactInfo] = useState([]);
-
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
 		fetch("http://localhost:5002/Homepage/Education/faculties")
 			.then(response => response.json())
 			.then(data => setFaculties(data))
-			.catch(error => console.error("Failed to fetch faculties:", error));
+			.catch((error) => {
+				setError(`Error fetching data: ${error.message}`);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 
 		fetch("http://localhost:5002/Homepage/Education/articles")
 			.then(response => response.json())
 			.then(data => setArticles(data))
-			.catch(error => console.error("Failed to fetch articles:", error));
-
-		fetch("http://localhost:5002/Homepage/Education/contact")
-			.then(response => response.json())
-			.then(data => {
-				setContactInfo(Array.isArray(data) ? data : []);
+			.catch((error) => {
+				setError(`Error fetching data: ${error.message}`);
 			})
-			.catch(error => console.error("Failed to fetch contact info:", error));
+			.finally(() => {
+				setLoading(false);
+			});
 	}, []);
 
 	return (
-		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%" }}>
+		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%", minHeight: "100vh" }}>
 			<Box sx={{ padding: 6, background: '#fff' }}>
 
 				<Typography variant="h4" align="center" sx={{
@@ -37,7 +40,7 @@ const Education = () => {
 				</Typography>
 
 				<Grid2 container spacing={4}>
-					{faculties.map((faculty) => (
+					{error ? <p>{error}</p> : loading ? <CircularProgress sx={{ color: "#aa3030" }} /> : faculties?.map((faculty) => (
 						<Grid2 item xs={12} sm={6} md={4} key={faculty.educationId}>
 							<Card
 								sx={{
@@ -113,7 +116,7 @@ const Education = () => {
 
 				<Grid2 container
 					spacing={4} sx={{ mb: 5 }}>
-					{articles.map((article) => (
+					{articles?.map((article) => (
 						<Grid2 item xs={12} sm={6} md={4} key={article.articleId}>
 							<Card
 								sx={{
@@ -189,32 +192,8 @@ const Education = () => {
 						</Grid2>
 					))}
 				</Grid2>
-				<Typography variant="h4" sx={{ mt: 6, mb: 2, fontWeight: 'bold' }}>
-					Contact Information
-				</Typography>
-
-				<Grid2 container spacing={4}>
-					{contactInfo.map((info) => (
-						<Grid2 item xs={12} sm={6} md={4} key={info.email}>
-							<Card sx={{ boxShadow: 3, borderRadius: 2, }}>
-								<CardContent>
-									<Typography variant="h6" color="darkred">
-										<strong>Email:</strong> {info.email}
-									</Typography>
-									<Typography>
-										<strong>Address:</strong> {info.address}
-									</Typography>
-									<Typography>
-										<strong>Phone:</strong> {info.phone_number}
-									</Typography>
-								</CardContent>
-							</Card>
-						</Grid2>
-					))}
-				</Grid2>
-
-
-			</Box></div>
+			</Box>
+		</div>
 
 	);
 };

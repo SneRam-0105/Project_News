@@ -2,7 +2,7 @@ import { Box, Typography, Link, Grid, Divider } from "@mui/material";
 
 export default function Footer() {
 	return (
-		<div style={{ display: "block", justifyContent: "center", backgroundColor: "#191919", color: "#e6e6e6", py: 4, fontFamily: "Rosario, sans-serif" }}>
+		<div style={{ display: "block", justifyContent: "center", backgroundColor: "#191919", color: "#e6e6e6", py: 4, fontFamily: "Rosario, sans-serif"}}>
 			<Grid container spacing={4} justifyContent="center" sx={{ px: 2 }}>
 				<div style={{ display: "flex", justifyContent: "center", gap: "50vh", paddingTop: "30px" }}>
 					{/* Contact Information */}
