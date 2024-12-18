@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Container, Grid, CircularProgress } from "@mui/material";
+import { Container, Grid, CircularProgress, Box, Typography } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
 
 const IT_Page = () => {
@@ -23,36 +23,48 @@ const IT_Page = () => {
 	}, []);
 
 	return (
-		<Container>
-			{loading ? (
-				<CircularProgress />
-			) : (
-<div style={{marginBottom:"50px"}}>
-				<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
-					{articles.length > 0 && (
-						<>
-							{articles.map((news, index) => {
-								const isSpecial = index % 6 === 0;
-								return (
-									<Grid
-										item
-										xs={12}
-										md={isSpecial ? 8 : 4}
-										key={news.id}
-										sx={{ display: "flex" }}
-									>
-										<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-											<ArticleCard {...news} />
-										</div>
-									</Grid>
-								);
-							})}
-						</>
+		<div style={{ marginBottom: "20px" }}>
+			<Box sx={{ padding: 4, background: '#fff' }}>
+
+				<Typography variant="h4" align="center" sx={{
+					color: "#aa3030",
+				}}>
+					Information Technology
+				</Typography>
+
+				<Container>
+					{loading ? (
+						<CircularProgress />
+					) : (
+						<div style={{ marginBottom: "50px" }}>
+							<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
+								{articles.length > 0 && (
+									<>
+										{articles.map((news, index) => {
+											const isSpecial = index % 6 === 0;
+											return (
+												<Grid
+													item
+													xs={12}
+													md={isSpecial ? 8 : 4}
+													key={news.id}
+													sx={{ display: "flex" }}
+												>
+													<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+														<ArticleCard {...news} />
+													</div>
+												</Grid>
+											);
+										})}
+									</>
+								)}
+							</Grid>
+						</div>
 					)}
-				</Grid>
-</div>
-			)}
-		</Container>
+				</Container>
+
+			</Box>
+		</div>
 	);
 };
 
