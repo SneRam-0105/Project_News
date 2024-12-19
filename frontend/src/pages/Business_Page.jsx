@@ -41,7 +41,7 @@ const Business_Page = () => {
 	}, []);
 
 	return (
-		<div style={{ backgroundColor: isDarkMode ? "#191919" : "#e6e6e6" }}>
+		<div style={{ backgroundColor: isDarkMode ? "#191919" : "#e6e6e6", paddingBottom:"70px" }}>
 			<Container sx={{ minHeight: "100vh", minWidth: "100vh" }}>
 				{error ? (
 					<p>{error}</p>
