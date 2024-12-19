@@ -1,5 +1,4 @@
 import { Box, Typography, Link, Grid, Divider } from "@mui/material";
-import ContactForm from "../../pages/Contact_Page";
 
 export default function Footer() {
   return (
@@ -35,7 +34,7 @@ export default function Footer() {
                 sx={{ display: "block", mb: 1 }}
               >
                 {" "}
-                Contact Details
+                Contact Us
               </Link>
             </Typography>
             <Typography>Email: edunews@newspaper.com</Typography>
