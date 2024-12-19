@@ -6,9 +6,9 @@ export default function Footer({ isDarkMode }) {
       style={{
         display: "block",
         justifyContent: "center",
-        backgroundColor: isDarkMode ? "#191919" : "#f0f0f0",
+        backgroundColor: isDarkMode ? "#080808" : "#f0f0f0",
         color: isDarkMode ? "#e6e6e6" : "#191919",
-        padding: "40px 0",
+        padding: "35px 0",
         fontFamily: "Rosario, sans-serif",
       }}
     >
