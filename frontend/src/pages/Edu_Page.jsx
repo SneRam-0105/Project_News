@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const Education = () => {
 	const [faculties, setFaculties] = useState([]);
@@ -32,7 +33,7 @@ const Education = () => {
 
 			{/* Heading Section */}
 			<Typography variant="h4" align="center" gutterBottom fontWeight="bold">
-				🎓 Education 📚
+				🎓 Categories 📚
 			</Typography>
 
 			{/* Faculties Section */}
@@ -75,11 +76,14 @@ const Education = () => {
 									{article.article_description.substring(0, 100)}...
 								</Typography>
 							</CardContent>
+
+
 							<Box sx={{ padding: 2 }}>
-								<Button fullWidth variant="outlined" color="primary">
+								<Button component={Link} to={article.article_link} target="_blank" variant="outlined" color="#aa3030" sx={{ mt: 2 }}>
 									Read More
 								</Button>
 							</Box>
+
 						</Card>
 					</Grid2>
 				))}

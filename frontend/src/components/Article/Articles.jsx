@@ -10,10 +10,11 @@ import {
 	CardContent,
 	CardMedia,
 	Modal,
+	Divider,
 	Box,
 } from "@mui/material";
 import defaultImage from "../../assets/default-img.jpg";
-import { Link } from "react-router-dom";
+
 
 function Articles() {
 	const [itNews, setITNews] = useState([]);
@@ -186,6 +187,7 @@ function Articles() {
 											{article.article_title}
 										</Typography>
 									</CardContent>
+
 								</Card>
 							))}
 						</Grid>
@@ -208,11 +210,12 @@ function Articles() {
 				>
 					{selectedArticle && (
 						<>
-							<Typography variant="h6" gutterBottom>
+							<Typography variant="h5" fontWeight="bold" gutterBottom>
 								{selectedArticle.title || selectedArticle.article_title}
 							</Typography>
+							<Divider variant="middle" sx={{ mb: "10px" }} />
 							<Typography variant="subtitle1">
-								{selectedArticle.description}
+								{selectedArticle.description || selectedArticle.article_description}
 							</Typography>
 							<Typography
 								onClick={() => window.open(selectedArticle.url, '_blank')}

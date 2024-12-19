@@ -11,7 +11,8 @@ create table articles(
     articleId integer not null primary key,
     article_title varchar(25) not null,
     article_description varchar(300) not null,
-    article_image varchar(100)   
+    article_image varchar(100),
+    articles_link varchar(255)
 );
 create table contact(
     email varchar(20) not null,
@@ -44,4 +45,31 @@ VALUES
  update articles set article_image = 'https://shorturl.at/1UIac' where articleId=1;
  update articles set article_image = 'https://shorturl.at/24r2a' where articleId=2;
  update articles set article_image = 'https://shorturl.at/VDd5k' where articleId=3;
+
+
+ALTER TABLE articles
+ADD COLUMN article_link VARCHAR(255);
+
+UPDATE articles
+SET article_link = 'https://www.engineeringnews.co.za/'
+WHERE articleId = 1;
+
+UPDATE articles
+SET article_link = 'https://blogs.helsinki.fi/globalcampus/category/online-learning-trends/'
+WHERE articleId = 2;
+
+UPDATE articles
+SET article_link = 'https://www.sciencedaily.com/news/earth_climate/sustainability/'
+WHERE articleId = 3;
+
+UPDATE articles
+SET article_link = 'https://www.who.int/campaigns/world-mental-health-day'
+WHERE articleId = 4;
+
+UPDATE articles
+SET article_link = 'https://www.betterup.com/blog/career-path'
+WHERE articleId = 5;
+
+update education set web_link = 'https://www.engineeringnews.co.za/' where educationId=1;
+update education set web_link = 'https://www.sciencedirect.com/topics/earth-and-planetary-sciences/medical-science' where educationId=2;
 
