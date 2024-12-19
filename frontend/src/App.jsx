@@ -13,6 +13,10 @@ import RootLayout from "./Routes/RootLayout";
 import LoginPage from "../src/pages/LoginPage/Login"
 import EditorLogin from "../src/pages/LoginPage/EditorLogin";
 import UserLogin from "../src/pages/LoginPage/UserLogin";
+import About_us from "./pages/About_us";
+import Advertise from "./pages/Advertise";
+import Terms from "./pages/Terms";
+import Privacy_Policy from "./pages/Privacy_Policy";
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -25,6 +29,10 @@ const App = () => {
 				<Route path="IT" element={<IT_Page />} />
 				<Route path="Business" element={<Business_Page />} />
 				<Route path="Edu" element={<Edu_Page />} />
+				<Route path="About" element={<About_us />} />
+				<Route path="Advertise" element={<Advertise />} />
+				<Route path="Terms" element={<Terms />} />
+				<Route path="PrivacyPolicy" element={<Privacy_Policy />} />
 			</Route>
 		)
 	);
