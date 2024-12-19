@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Grid, CircularProgress, TextField, Box, InputAdornment } from "@mui/material";
+import {
+	Container,
+	Grid,
+	CircularProgress,
+	TextField,
+	Box,
+	InputAdornment,
+} from "@mui/material";
 
 import ArticleCard from "../components/Article/ArticleCard";
 import SearchIcon from "@mui/icons-material/Search";
@@ -21,7 +28,7 @@ const IT_Page = () => {
 	}, [searchTerm, articles]);
 
 	// Fetch articles from the API
-	const [error, setError] = useState(null)
+	const [error, setError] = useState(null);
 	useEffect(() => {
 		axios
 			.get("http://localhost:5002/Homepage/IT")
@@ -33,16 +40,18 @@ const IT_Page = () => {
 				setArticles(response.data.articles);
 			})
 			.catch((error) => {
-				setError(`Error fetching data: ${error.message}`)
+				setError(`Error fetching data: ${error.message}`);
 			})
 			.finally(() => {
-				setLoading(false)
+				setLoading(false);
 			});
 	}, []);
 
 	return (
 		<Container sx={{ minHeight: "100vh" }}>
-			{error ? <p>{error}</p> : loading ? (
+			{error ? (
+				<p>{error}</p>
+			) : loading ? (
 				<CircularProgress sx={{ color: "#aa3030" }} />
 			) : (
 				<>
@@ -62,7 +71,6 @@ const IT_Page = () => {
 									),
 								}}
 							/>
-
 						</Box>
 
 						<div style={{ marginBottom: "50px" }}>
