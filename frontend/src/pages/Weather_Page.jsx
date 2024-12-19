@@ -8,6 +8,7 @@ const WeatherApp = () => {
 	const [weather, setWeather] = useState([]);
 	const [city, setCity] = useState("Helsinki");
 	const [loading, setLoading] = useState([true]);
+	const [error, setError] = useState(null);
 
 	const fetchWeatherData = async () => {
 		try {
@@ -17,7 +18,7 @@ const WeatherApp = () => {
 			setWeather(response.data);
 			setLoading(false);
 		} catch (error) {
-			console.error("Error fetching data:", error);
+			setError(`Error fetching data: ${error.message}`);
 			setLoading(false);
 		}
 	};
@@ -33,13 +34,13 @@ const WeatherApp = () => {
 
 	useEffect(() => {
 		fetchWeatherData(city);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<div>
-			{loading ? (
-				<CircularProgress sx={{ color: "#aa3030" }} />
+			{error ? <p>{error}</p> : loading ? (
+				<CircularProgress sx={{ color: "#aa3030", display:"flex"}} />
 			) : (
 				<Widget
 					key={weather.cityName}
