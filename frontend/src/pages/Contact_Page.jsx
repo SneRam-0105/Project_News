@@ -14,19 +14,19 @@ const useStyles = makeStyles({
     padding: "20px",
     borderRadius: "10px",
     backgroundColor: "#f9f9f9",
-    color: "#aa3030",
+    color: "#aa3030 !important",
     boxShadow: "0 3px 5px rgba(0, 0, 0, 0.2)",
-    maxWidth: "500px",
+    maxWidth: "100%",
     width: "100%",
   },
   textField: {
     marginBottom: "15px",
   },
   submitButton: {
-    backgroundColor: "#aa3030",
+    backgroundColor: "#aa3030 !important",
     color: "white",
     "&:hover": {
-      backgroundColor: "#191919",
+      backgroundColor: "#191919 !important",
     },
     width: "100%",
   },
@@ -52,7 +52,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Add your form submission logic here
+    //
   };
 
   return (

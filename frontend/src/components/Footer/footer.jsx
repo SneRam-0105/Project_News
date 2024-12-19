@@ -1,4 +1,5 @@
 import { Box, Typography, Link, Grid, Divider } from "@mui/material";
+import ContactForm from "../../pages/Contact_Page";
 
 export default function Footer() {
   return (
@@ -12,25 +13,28 @@ export default function Footer() {
         fontFamily: "Rosario, sans-serif",
       }}
     >
-      <Grid container spacing={4} justifyContent="center" sx={{ px: 2 }}>
+      <Grid container spacing={2} justifyContent="center" sx={{ px: 2 }}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "50vh",
+            gap: "6rem",
             paddingTop: "30px",
           }}
         >
+          {/* contact form */}
+          <ContactForm />
           {/* Contact Information */}
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={5}>
             <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
-              Contact Us
+              Contact Details
             </Typography>
-            <Typography>Email: info@newspaper.com</Typography>
+            <Typography>Email: edunews@newspaper.com</Typography>
             <Typography>Address: 123 Helsinki, Finland</Typography>
           </Grid>
+
           {/* Quick Links */}
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={5}>
             <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
               Quick Links
             </Typography>
@@ -108,8 +112,8 @@ export default function Footer() {
       <Divider sx={{ bgcolor: "#545454", my: 4 }} />
 
       {/* Footer Bottom */}
-      <Box sx={{ textAlign: "center", fontSize: "12px" }}>
-        <Typography sx={{ paddingBottom: "30px" }}>
+      <Box sx={{ textAlign: "center", fontSize: "0.8rem" }}>
+        <Typography sx={{ paddingBottom: "10px" }}>
           &copy; 2024 Newspaper Inc. All rights reserved.
         </Typography>
       </Box>
