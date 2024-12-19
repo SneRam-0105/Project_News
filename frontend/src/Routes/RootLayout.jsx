@@ -6,7 +6,7 @@ const RootLayout = ({ isDarkMode, handleThemeChange }) => {
   return (
     <div className={`RootLayout ${isDarkMode ? 'dark' : 'light'}`}>
       <Header isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
-      <Outlet />
+      <Outlet context={{ isDarkMode }} />  {/* Pass down isDarkMode to children */}
       <Footer isDarkMode={isDarkMode} />
     </div>
   );

@@ -14,8 +14,7 @@ const Header = ({ isDarkMode, handleThemeChange, onClickCategory }) => {
         justifyContent: 'space-evenly',
         alignItems: 'center',
         padding: '8px 20px',
-        marginBottom: '35px',
-        backgroundColor: isDarkMode ? '#191919' : '#f0f0f0',
+        backgroundColor: isDarkMode ? '#080808' : '#f0f0f0',
       }}
     >
       <NavLink to="/">

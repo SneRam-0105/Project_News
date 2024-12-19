@@ -1,46 +1,57 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
+
 
 const Education = () => {
+const { isDarkMode } = useOutletContext();
 	const [faculties, setFaculties] = useState([]);
 	const [articles, setArticles] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:5002/Homepage/Education/faculties")
-			.then(response => response.json())
-			.then(data => setFaculties(data))
-			.catch(error => console.error("Failed to fetch faculties:", error));
+			.then((response) => response.json())
+			.then((data) => setFaculties(data))
+			.catch((error) => console.error("Failed to fetch faculties:", error));
 
 		fetch("http://localhost:5002/Homepage/Education/articles")
-			.then(response => response.json())
-			.then(data => setArticles(data))
-			.catch(error => console.error("Failed to fetch articles:", error));
-
-		fetch("http://localhost:5002/Homepage/Education/contact")
-			.then(response => response.json())
-			.then(data => {
-				setContactInfo(Array.isArray(data) ? data : []);
-			})
-			.catch(error => console.error("Failed to fetch contact info:", error));
+			.then((response) => response.json())
+			.then((data) => setArticles(data))
+			.catch((error) => console.error("Failed to fetch articles:", error));
 	}, []);
+
+	// Conditional styles for dark mode
+	const darkModeStyles = {
+		background: isDarkMode ? "#121212" : "#fff",
+		color: isDarkMode ? "#e0e0e0" : "#191919",
+		cardBackground: isDarkMode ? "#1e1e1e" : "#f2f4f5",
+		buttonBackground: isDarkMode ? "#aa3030" : "#fff",
+		buttonColor: isDarkMode ? "#e6e6e6" : "#aa3030",
+		hoverBackground: isDarkMode ? "#555" : "#aa3030",
+		hoverColor: isDarkMode ? "#fff" : "#fff",
+	};
 
 	return (
 		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%" }}>
-			<Box sx={{ padding: 6, background: '#fff' }}>
-
-				<Typography variant="h4" align="center" sx={{
-					color: "#aa3030", mb: 2
-				}}>
+			<Box sx={{ padding: 6, background: darkModeStyles.background }}>
+				<Typography
+					variant="h4"
+					align="center"
+					sx={{
+						color: darkModeStyles.color,
+						mb: 2,
+					}}
+				>
 					Education
 				</Typography>
 
-				{/* Ensuring faculty cards are the same size */}
+				{/* Faculty Cards */}
 				<Grid2
 					container
 					spacing={4}
 					sx={{
-						justifyContent: { xs: 'flex-start', md: 'center' },
-						alignItems: { xs: 'flex-start', md: 'center' }
+						justifyContent: { xs: "flex-start", md: "center" },
+						alignItems: { xs: "flex-start", md: "center" },
 					}}
 				>
 					{faculties.map((faculty) => (
@@ -52,7 +63,7 @@ const Education = () => {
 									justifyContent: "space-between",
 									height: "200px",
 									width: "200px",
-									backgroundColor: "#fff",
+									backgroundColor: darkModeStyles.cardBackground,
 									boxShadow: 3,
 									borderRadius: "4px",
 									transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -73,6 +84,7 @@ const Education = () => {
 											lineHeight: 1.3,
 											mb: 1,
 											textAlign: "center",
+											color: darkModeStyles.color,
 										}}
 									>
 										{faculty.faculty}
@@ -84,6 +96,7 @@ const Education = () => {
 											fontSize: "1rem",
 											textAlign: "center",
 											mb: 2,
+											color: darkModeStyles.color,
 										}}
 									>
 										Articles: {faculty.articles_number}
@@ -97,12 +110,12 @@ const Education = () => {
 									fullWidth
 									sx={{
 										fontSize: "0.9rem",
-										backgroundColor: "#fff",
-										color: "#aa3030",
+										backgroundColor: darkModeStyles.buttonBackground,
+										color: darkModeStyles.buttonColor,
 										borderRadius: 0,
 										"&:hover": {
-											backgroundColor: "#aa3030",
-											color: "#fff",
+											backgroundColor: darkModeStyles.hoverBackground,
+											color: darkModeStyles.hoverColor,
 										},
 									}}
 								>
@@ -113,16 +126,22 @@ const Education = () => {
 					))}
 				</Grid2>
 
-				<Typography variant="h4" align="center" sx={{ mt: 6, mb: 1, color: "#aa3030" }}>
+				{/* Articles */}
+				<Typography
+					variant="h4"
+					align="center"
+					sx={{ mt: 6, mb: 1, color: darkModeStyles.color }}
+				>
+					Articles
 				</Typography>
 
 				<Grid2
 					container
 					spacing={4}
 					sx={{
-						justifyContent: { xs: 'flex-start', md: 'center' },
-						alignItems: { xs: 'flex-start', md: 'center' },
-						mb: 5
+						justifyContent: { xs: "flex-start", md: "center" },
+						alignItems: { xs: "flex-start", md: "center" },
+						mb: 5,
 					}}
 				>
 					{articles.map((article) => (
@@ -136,7 +155,7 @@ const Education = () => {
 									mb: 3,
 									height: "100%",
 									width: "550px",
-									backgroundColor: "#fff",
+									backgroundColor: darkModeStyles.cardBackground,
 									boxShadow: 3,
 									borderRadius: "4px",
 									transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -161,6 +180,7 @@ const Education = () => {
 											fontSize: "1.2rem",
 											fontWeight: "bold",
 											lineHeight: 1.3,
+											color: darkModeStyles.color,
 										}}
 									>
 										{article.article_title}
@@ -174,6 +194,7 @@ const Education = () => {
 											overflow: "hidden",
 											WebkitLineClamp: 3,
 											fontSize: "0.9rem",
+											color: darkModeStyles.color,
 										}}
 									>
 										{article.article_description.substring(0, 100)}...
@@ -184,12 +205,12 @@ const Education = () => {
 									fullWidth
 									sx={{
 										fontSize: "0.9rem",
-										backgroundColor: "#fff",
-										color: "#aa3030",
+										backgroundColor: darkModeStyles.buttonBackground,
+										color: darkModeStyles.buttonColor,
 										borderRadius: 0,
 										"&:hover": {
-											backgroundColor: "#aa3030",
-											color: "#fff",
+											backgroundColor: darkModeStyles.hoverBackground,
+											color: darkModeStyles.hoverColor,
 										},
 									}}
 								>
@@ -199,7 +220,6 @@ const Education = () => {
 						</Grid2>
 					))}
 				</Grid2>
-
 			</Box>
 		</div>
 	);

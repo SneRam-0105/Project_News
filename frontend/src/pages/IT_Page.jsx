@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import { Container, Grid, CircularProgress, TextField, Box, InputAdornment } from "@mui/material";
-
 import ArticleCard from "../components/Article/ArticleCard";
 import SearchIcon from "@mui/icons-material/Search";
 
 const IT_Page = () => {
+	const { isDarkMode } = useOutletContext();
 	const [articles, setArticles] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [filterednews, setFilteredNews] = useState([]);
@@ -21,7 +22,7 @@ const IT_Page = () => {
 	}, [searchTerm, articles]);
 
 	// Fetch articles from the API
-	const [error, setError] = useState(null)
+	const [error, setError] = useState(null);
 	useEffect(() => {
 		axios
 			.get("http://localhost:5002/Homepage/IT")
@@ -30,93 +31,91 @@ const IT_Page = () => {
 				setArticles(fetchedArticles);
 				setFilteredNews(fetchedArticles); // Initialize filtered news with all articles
 				setLoading(false);
-				setArticles(response.data.articles);
 			})
 			.catch((error) => {
-				setError(`Error fetching data: ${error.message}`)
+				setError(`Error fetching data: ${error.message}`);
 			})
 			.finally(() => {
-				setLoading(false)
+				setLoading(false);
 			});
 	}, []);
 
 	return (
-		<Container sx={{ minHeight: "100vh" }}>
-			{error ? <p>{error}</p> : loading ? (
-				<CircularProgress sx={{ color: "#aa3030" }} />
-			) : (
-				<>
-					<div>
-						<Box sx={{ mb: 3 }}>
-							<TextField
-								fullWidth
-								variant="outlined"
-								placeholder="Search news by title"
-								value={searchTerm}
-								onChange={(e) => setSearchTerm(e.target.value)}
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<SearchIcon />
-										</InputAdornment>
-									),
-								}}
-							/>
+		<div style={{ backgroundColor: isDarkMode ? "#191919" : "#e6e6e6" }}>
+			<Container sx={{ minHeight: "100vh" }}>
+				{error ? (
+					<p>{error}</p>
+				) : loading ? (
+					<CircularProgress sx={{ color: "#aa3030" }} />
+				) : (
+					<>
+						<div>
+							<Box sx={{ mb: 3, pt: "35px" }}>
+								<TextField
+									fullWidth
+									variant="outlined"
+									placeholder="Search news by title"
+									value={searchTerm}
+									onChange={(e) => setSearchTerm(e.target.value)}
+									InputProps={{
+										startAdornment: (
+											<InputAdornment position="start">
+												<SearchIcon sx={{ color: isDarkMode ? "#e6e6e6" : "#191919" }} />
+											</InputAdornment>
+										),
+										style: {
+											color: isDarkMode ? "#e6e6e6" : "#191919", // Set the text color
+										},
+									}}
+									InputLabelProps={{
+										style: {
+											color: isDarkMode ? "#e6e6e6" : "#191919", // Set placeholder color
+										},
+									}}
+									sx={{
+										"& .MuiOutlinedInput-root": {
+											"& fieldset": {
+												borderColor: isDarkMode ? "#e6e6e6" : "#191919", // Border color
+											},
+											"&:hover fieldset": {
+												borderColor: isDarkMode ? "#cccccc" : "#333333", // Hover border color
+											},
+										},
+									}}
+								/>
+							</Box>
 
-						</Box>
-
-						<div style={{ marginBottom: "50px" }}>
-							<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
-								{filterednews.length > 0 ? (
-									filterednews.map((news, index) => {
-										const isSpecial = index % 6 === 0;
-										return (
-											<Grid
-												item
-												xs={12}
-												md={isSpecial ? 8 : 4}
-												key={news.id || index} // Added fallback key for safety
-												sx={{ display: "flex" }}
-											>
-												<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-													<ArticleCard {...news} />
-												</div>
-											</Grid>
-										);
-									})
-								) : (
-									<p>No news found matching your search.</p>
-								)}
-							</Grid>
+							<div style={{ marginBottom: "50px" }}>
+								<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
+									{filterednews.length > 0 ? (
+										filterednews.map((news, index) => {
+											const isSpecial = index % 6 === 0;
+											return (
+												<Grid
+													item
+													xs={12}
+													md={isSpecial ? 8 : 4}
+													key={news.id || index}
+													sx={{ display: "flex" }}
+												>
+													<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+														<ArticleCard {...news} isDarkMode={isDarkMode} />
+													</div>
+												</Grid>
+											);
+										})
+									) : (
+										<p style={{ color: isDarkMode ? "#e6e6e6" : "#191919" }}>
+											No news found matching your search.
+										</p>
+									)}
+								</Grid>
+							</div>
 						</div>
-					</div>
-					<div style={{ marginBottom: "50px" }}>
-						<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
-							{articles.length > 0 && (
-								<>
-									{articles?.map((news, index) => {
-										const isSpecial = index % 6 === 0;
-										return (
-											<Grid
-												item
-												xs={12}
-												md={isSpecial ? 8 : 4}
-												key={news.id}
-												sx={{ display: "flex" }}
-											>
-												<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-													<ArticleCard {...news} />
-												</div>
-											</Grid>
-										);
-									})}
-								</>
-							)}
-						</Grid>
-					</div>
-				</>
-			)}
-		</Container>
+					</>
+				)}
+			</Container>
+		</div>
 	);
 };
 

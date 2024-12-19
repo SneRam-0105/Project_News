@@ -58,7 +58,7 @@ export default function Footer({ isDarkMode }) {
       </Grid>
       <Divider sx={{ bgcolor: "#545454", my: 4 }} />
       <Box sx={{ textAlign: "center", fontSize: "12px" }}>
-        <Typography sx={{ paddingBottom: "30px" }}>
+        <Typography>
           &copy; 2024 Newspaper Inc. All rights reserved.
         </Typography>
       </Box>
