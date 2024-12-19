@@ -7,6 +7,7 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import DefaultImage from '/src/assets/trending-news.jpg';
 
 function Widget({
   cityName,
@@ -75,31 +76,30 @@ function Widget({
       <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
         Trending News
       </Typography>
-
-      <Card
-        sx={{
-          display: "flex",
-          marginBottom: 2,
-          boxShadow: 1,
-          borderRadius: 1,
-          backgroundColor: "grey.300",
-        }}
-      >
+      <Card sx={{
+        display: "flex",
+        marginBottom: 2,
+        boxShadow: 1,
+        borderRadius: 1,
+        backgroundColor: "grey.200",
+      }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="body2">{description_news}</Typography>
+          <Typography variant="subtitle1">Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
         </CardContent>
         <CardMedia
           component="img"
-          image={urlToImage_news}
-          alt="Card Image"
+          image={DefaultImage}
+          alt="News Image"
           sx={{
-            width: 130,
+            width: 170,
             height: 230,
             borderRadius: 1,
             objectFit: "inherit",
           }}
         />
+
       </Card>
+
       <Card>
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
