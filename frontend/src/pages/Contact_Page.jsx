@@ -7,8 +7,9 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "right",
+    alignItems: "center",
     marginTop: "20px",
+    marginBottom: "50px",
   },
   paper: {
     padding: "20px",
@@ -16,11 +17,11 @@ const useStyles = makeStyles({
     backgroundColor: "#f9f9f9",
     color: "#aa3030 !important",
     boxShadow: "0 3px 5px rgba(0, 0, 0, 0.2)",
-    maxWidth: "100%",
+    maxWidth: "50%",
     width: "100%",
   },
   textField: {
-    marginBottom: "15px",
+    marginBottom: "10px",
   },
   submitButton: {
     backgroundColor: "#aa3030 !important",

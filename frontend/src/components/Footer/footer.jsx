@@ -18,23 +18,33 @@ export default function Footer() {
           style={{
             display: "flex",
             justifyContent: "center",
-            gap: "6rem",
+            gap: "50vh",
             paddingTop: "30px",
           }}
         >
-          {/* contact form */}
-          <ContactForm />
           {/* Contact Information */}
-          <Grid item xs={12} sm={5}>
-            <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
-              Contact Details
+          <Grid item xs={12} sm={4}>
+            <Typography
+              variant="h6"
+              sx={{ color: "#aa3030 !important", mb: 2 }}
+            >
+              <Link
+                href="/contact"
+                color="inherit"
+                underline="hover"
+                sx={{ display: "block", mb: 1 }}
+              >
+                {" "}
+                Contact Details
+              </Link>
             </Typography>
             <Typography>Email: edunews@newspaper.com</Typography>
             <Typography>Address: 123 Helsinki, Finland</Typography>
+            {/* link in contact us */}
           </Grid>
 
           {/* Quick Links */}
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={4}>
             <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
               Quick Links
             </Typography>
@@ -109,7 +119,7 @@ export default function Footer() {
           </Grid>
         </div>
       </Grid>
-      <Divider sx={{ bgcolor: "#545454", my: 4 }} />
+      <Divider sx={{ bgcolor: "#545454", my: 1 }} />
 
       {/* Footer Bottom */}
       <Box sx={{ textAlign: "center", fontSize: "0.8rem" }}>

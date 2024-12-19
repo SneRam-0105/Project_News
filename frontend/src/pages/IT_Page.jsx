@@ -104,36 +104,6 @@ const IT_Page = () => {
               </Grid>
             </div>
           </div>
-          <div style={{ marginBottom: "50px" }}>
-            <Grid container spacing={2} sx={{ alignItems: "stretch" }}>
-              {articles.length > 0 && (
-                <>
-                  {articles?.map((news, index) => {
-                    const isSpecial = index % 6 === 0;
-                    return (
-                      <Grid
-                        item
-                        xs={12}
-                        md={isSpecial ? 8 : 4}
-                        key={news.id}
-                        sx={{ display: "flex" }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            height: "100%",
-                          }}
-                        >
-                          <ArticleCard {...news} />
-                        </div>
-                      </Grid>
-                    );
-                  })}
-                </>
-              )}
-            </Grid>
-          </div>
         </>
       )}
     </Container>
