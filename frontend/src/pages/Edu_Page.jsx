@@ -4,7 +4,6 @@ import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@m
 const Education = () => {
 	const [faculties, setFaculties] = useState([]);
 	const [articles, setArticles] = useState([]);
-	const [contactInfo, setContactInfo] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:5002/Homepage/Education/faculties")
