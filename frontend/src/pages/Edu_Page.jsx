@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const Education = () => {
 	const [faculties, setFaculties] = useState([]);
@@ -16,12 +17,7 @@ const Education = () => {
 			.then(data => setArticles(data))
 			.catch(error => console.error("Failed to fetch articles:", error));
 
-		fetch("http://localhost:5002/Homepage/Education/contact")
-			.then(response => response.json())
-			.then(data => {
-				setContactInfo(Array.isArray(data) ? data : []);
-			})
-			.catch(error => console.error("Failed to fetch contact info:", error));
+
 	}, []);
 
 	return (
@@ -31,7 +27,7 @@ const Education = () => {
 				<Typography variant="h4" align="center" sx={{
 					color: "#aa3030", mb: 2
 				}}>
-					Education
+					🎓 Categories 📚
 				</Typography>
 
 				{/* Ensuring faculty cards are the same size */}
@@ -179,20 +175,7 @@ const Education = () => {
 										{article.article_description.substring(0, 100)}...
 									</Typography>
 								</CardContent>
-								<Button
-									variant="contained"
-									fullWidth
-									sx={{
-										fontSize: "0.9rem",
-										backgroundColor: "#fff",
-										color: "#aa3030",
-										borderRadius: 0,
-										"&:hover": {
-											backgroundColor: "#aa3030",
-											color: "#fff",
-										},
-									}}
-								>
+								<Button component={Link} to={article.article_link} target="_blank" variant="outlined" color="#aa3030" sx={{ mt: 2 }}>
 									Read More
 								</Button>
 							</Card>
