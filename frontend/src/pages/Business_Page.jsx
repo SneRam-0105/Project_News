@@ -57,7 +57,7 @@ const Business_Page = () => {
       ) : (
         <div style={{ marginBottom: "100px" }}>
           {/* Search Bar */}
-          <Box sx={{ mb: 3 }}>
+          <Box sx={{ mb: 3, mt: 3, }}>
             <TextField
               fullWidth
               variant="outlined"
