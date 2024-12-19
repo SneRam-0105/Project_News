@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, CircularProgress } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const Education = () => {
 	const [faculties, setFaculties] = useState([]);
@@ -33,10 +34,9 @@ const Education = () => {
 		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%", minHeight: "100vh" }}>
 			<Box sx={{ padding: 6, background: '#fff' }}>
 
-				<Typography variant="h4" align="center" sx={{
-					color: "#aa3030", mb: 2
-				}}>
-					Education
+				{/* Heading Section */}
+				<Typography variant="h4" align="center" gutterBottom fontWeight="bold">
+					🎓 Categories 📚
 				</Typography>
 
 				<Grid2 container spacing={4}>
@@ -114,86 +114,36 @@ const Education = () => {
 				<Typography variant="h4" align="center" sx={{ mt: 6, mb: 1, color: "#aa3030" }}>
 				</Typography>
 
-				<Grid2 container
-					spacing={4} sx={{ mb: 5 }}>
-					{articles?.map((article) => (
+				<Grid2 container spacing={4}>
+					{articles.map((article) => (
 						<Grid2 item xs={12} sm={6} md={4} key={article.articleId}>
-							<Card
-								sx={{
-									display: "flex",
-									flexDirection: "column",
-									justifyContent: "space-between",
-									mt: 2,
-									mb: 3,
-									height: "100%",
-									width: "550px",
-									backgroundColor: "#fff",
-									boxShadow: 3,
-									borderRadius: "4px",
-									transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-									"&:hover": {
-										transform: "scale(1.05)",
-										boxShadow: 5,
-									},
-								}}
-							>
+							<Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 								<CardMedia
 									component="img"
+									height="140"
 									image={`https://picsum.photos/500/300?random=${article.articleId}`}
 									alt={`Random Article ${article.articleId}`}
-									sx={{ borderRadius: "4px 4px 0 0" }}
 								/>
 								<CardContent sx={{ flexGrow: 1 }}>
-									<Typography
-										variant="h6"
-										component="div"
-										gutterBottom
-										sx={{
-											fontSize: "1.2rem",
-											fontWeight: "bold",
-											lineHeight: 1.3,
-										}}
-									>
+									<Typography gutterBottom fontWeight="bold">
 										{article.article_title}
 									</Typography>
-									<Typography
-										variant="body2"
-										color="textSecondary"
-										sx={{
-											display: "-webkit-box",
-											WebkitBoxOrient: "vertical",
-											overflow: "hidden",
-											WebkitLineClamp: 3,
-											fontSize: "0.9rem",
-										}}
-									>
+									<Typography variant="body2" color="textSecondary">
 										{article.article_description.substring(0, 100)}...
 									</Typography>
 								</CardContent>
-								<Button
-									variant="contained"
-									fullWidth
-									sx={{
-										fontSize: "0.9rem",
-										backgroundColor: "#fff",
-										color: "#aa3030",
-										borderRadius: 0,
-										"&:hover": {
-											backgroundColor: "#aa3030",
-											color: "#fff",
-										},
-									}}
-								>
-									Read More
-								</Button>
-
-
+								<Box sx={{ padding: 2 }}>
+									<Button component={Link} to={article.article_link} target="_blank" variant="outlined" color="#aa3030" sx={{ mt: 2 }}>
+										Read More
+									</Button>
+								</Box>
 							</Card>
 						</Grid2>
 					))}
 				</Grid2>
-			</Box>
-		</div>
+
+
+			</Box></div>
 
 	);
 };
