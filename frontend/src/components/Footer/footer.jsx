@@ -24,7 +24,7 @@ export default function Footer() {
           {/* Contact Information */}
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
-              Contact Details
+              Contact Us
             </Typography>
             <Typography>Email: info@newspaper.com</Typography>
             <Typography>Address: 123 Helsinki, Finland</Typography>
