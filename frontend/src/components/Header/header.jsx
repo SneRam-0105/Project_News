@@ -25,22 +25,23 @@ const Header = ({ onClickCategory }) => {
 			}}
 		>
 
+
 			<NavLink to="/">
-  <Box
-    sx={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: 65,
-    }}
-  >
-    <img
-      src={isDarkMode ? logoForDark : logoForBright} 
-      alt="Logo"
-      style={{ height: '60px', width: 'auto' }}
-    />
-  </Box>
-</NavLink>
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						height: 65,
+					}}
+				>
+					<img
+						src={isDarkMode ? logoForDark : logoForBright}
+						alt="Logo"
+						style={{ height: '60px', width: 'auto' }}
+					/>
+				</Box>
+			</NavLink>
 
 
 
@@ -69,25 +70,25 @@ const Header = ({ onClickCategory }) => {
 						>
 
 							<li style={{ margin: '9px 20px' }}>
-<Button
-  variant="text"
-  onClick={() => onClickCategory(category.toLowerCase())}
-  sx={{
-    color: 'inherit',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textTransform: 'none',
-    '&:hover': {
-      color: '#aa3030',
-    },
-  }}
->
-  {category === 'IT' 
-    ? 'Information Technology' 
-    : category === 'Edu' 
-    ? 'Education' 
-    : category}
-</Button>
+								<Button
+									variant="text"
+									onClick={() => onClickCategory(category.toLowerCase())}
+									sx={{
+										color: 'inherit',
+										fontSize: 20,
+										fontWeight: 'bold',
+										textTransform: 'none',
+										'&:hover': {
+											color: '#aa3030',
+										},
+									}}
+								>
+									{category === 'IT'
+										? 'Information Technology'
+										: category === 'Edu'
+											? 'Education'
+											: category}
+								</Button>
 
 							</li>
 						</NavLink>
@@ -99,12 +100,12 @@ const Header = ({ onClickCategory }) => {
 			<ToggleDarkMode handleThemeChange={handleThemeChange} />
 
 
-			<NavLink to="/Login" style={{textDecoration:"none"}}>
+			<NavLink to="/Login" style={{ textDecoration: "none" }}>
 				<Box sx={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
 				}}>
 					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
-					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold'}}>
+					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
 						Login
 					</Typography>
 				</Box>
