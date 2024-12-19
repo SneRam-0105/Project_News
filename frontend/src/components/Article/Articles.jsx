@@ -40,7 +40,7 @@ function Articles() {
 				);
 				setEducationNews(educationResponse.data.slice(0, 3));
 			} catch (error) {
-				setError("Error fetching news: " + error.message);
+				setError(`Error fetching news: ${error.message}`);
 			} finally {
 				setLoading(false);
 			}
@@ -51,8 +51,6 @@ function Articles() {
 
 	const handleCardClick = (article) => {
 		setSelectedArticle(article);
-
-
 	};
 
 	const handleCloseModal = () => {
@@ -61,8 +59,8 @@ function Articles() {
 
 	return (
 		<div>
-			{error ? (
-				<Typography color="error" align="center" sx={{ marginY: 4 }}>
+			<Container sx={{ minHeight: "100vh", minWidth: "100vh" }}>{error ? (
+				<Typography sx={{ marginY: 4, color: "error", align: "center" }}>
 					{error}
 				</Typography>
 			) : loading ? (
@@ -193,7 +191,7 @@ function Articles() {
 						</Grid>
 					</Grid>
 				</Container>
-			)}
+			)}</Container>
 
 			<Modal open={selectedArticle} onClose={handleCloseModal}>
 				<Box
@@ -250,4 +248,4 @@ function Articles() {
 	);
 }
 
-export default Articles;	
+export default Articles;

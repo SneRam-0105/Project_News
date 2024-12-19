@@ -100,24 +100,33 @@ const ArticleCard = ({
                         label={category}
                         color="primary"
                         size="small"
-                        sx={{ mb: 1 }}
+                        sx={{ mb: 1, px: "50px" }}
                     />
                 )}
+
 
                 <Typography
                     variant="h6"
                     component="div"
                     gutterBottom
-                    sx={{ fontSize: "1.2rem", fontWeight: "bold", lineHeight: 1.3 }}
+                    sx={{
+                        fontSize: "1.2rem",
+                        fontWeight: "bold",
+                        lineHeight: 1.3,
+                    }}
                 >
                     {title}
                 </Typography>
+
 
                 <Typography
                     variant="caption"
                     color="textSecondary"
                     display="block"
-                    sx={{ mb: 1, fontSize: "0.9rem" }}
+                    sx={{
+                        mb: 1,
+                        fontSize: "0.9rem",
+                    }}
                 >
                     {author && <strong>By {author}</strong>} | {date}
                 </Typography>

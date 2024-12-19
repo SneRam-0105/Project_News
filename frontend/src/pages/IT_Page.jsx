@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Grid, CircularProgress, TextField, Box, InputAdornment } from "@mui/material";
+
 import ArticleCard from "../components/Article/ArticleCard";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -20,6 +21,7 @@ const IT_Page = () => {
 	}, [searchTerm, articles]);
 
 	// Fetch articles from the API
+	const [error, setError] = useState(null)
 	useEffect(() => {
 		axios
 			.get("http://localhost:5002/Homepage/IT")
@@ -28,62 +30,91 @@ const IT_Page = () => {
 				setArticles(fetchedArticles);
 				setFilteredNews(fetchedArticles); // Initialize filtered news with all articles
 				setLoading(false);
+				setArticles(response.data.articles);
 			})
 			.catch((error) => {
-				console.error("Error fetching data:", error);
-				setLoading(false);
+				setError(`Error fetching data: ${error.message}`)
+			})
+			.finally(() => {
+				setLoading(false)
 			});
 	}, []);
 
 	return (
-		<Container>
-			{loading ? (
-				<CircularProgress />
+		<Container sx={{ minHeight: "100vh" }}>
+			{error ? <p>{error}</p> : loading ? (
+				<CircularProgress sx={{ color: "#aa3030" }} />
 			) : (
-				<div>
-					<Box sx={{ mb: 3 }}>
-						<TextField
-							fullWidth
-							variant="outlined"
-							placeholder="Search news by title"
-							value={searchTerm}
-							onChange={(e) => setSearchTerm(e.target.value)}
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position="start">
-										<SearchIcon />
-									</InputAdornment>
-								),
-							}}
-						/>
+				<>
+					<div>
+						<Box sx={{ mb: 3 }}>
+							<TextField
+								fullWidth
+								variant="outlined"
+								placeholder="Search news by title"
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
+								InputProps={{
+									startAdornment: (
+										<InputAdornment position="start">
+											<SearchIcon />
+										</InputAdornment>
+									),
+								}}
+							/>
 
-					</Box>
+						</Box>
 
+						<div style={{ marginBottom: "50px" }}>
+							<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
+								{filterednews.length > 0 ? (
+									filterednews.map((news, index) => {
+										const isSpecial = index % 6 === 0;
+										return (
+											<Grid
+												item
+												xs={12}
+												md={isSpecial ? 8 : 4}
+												key={news.id || index} // Added fallback key for safety
+												sx={{ display: "flex" }}
+											>
+												<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+													<ArticleCard {...news} />
+												</div>
+											</Grid>
+										);
+									})
+								) : (
+									<p>No news found matching your search.</p>
+								)}
+							</Grid>
+						</div>
+					</div>
 					<div style={{ marginBottom: "50px" }}>
 						<Grid container spacing={2} sx={{ alignItems: "stretch" }}>
-							{filterednews.length > 0 ? (
-								filterednews.map((news, index) => {
-									const isSpecial = index % 6 === 0;
-									return (
-										<Grid
-											item
-											xs={12}
-											md={isSpecial ? 8 : 4}
-											key={news.id || index} // Added fallback key for safety
-											sx={{ display: "flex" }}
-										>
-											<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-												<ArticleCard {...news} />
-											</div>
-										</Grid>
-									);
-								})
-							) : (
-								<p>No news found matching your search.</p>
+							{articles.length > 0 && (
+								<>
+									{articles?.map((news, index) => {
+										const isSpecial = index % 6 === 0;
+										return (
+											<Grid
+												item
+												xs={12}
+												md={isSpecial ? 8 : 4}
+												key={news.id}
+												sx={{ display: "flex" }}
+											>
+												<div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+													<ArticleCard {...news} />
+												</div>
+											</Grid>
+										);
+									})}
+								</>
 							)}
 						</Grid>
 					</div>
-				</div>
+				</>
 			)}
 		</Container>
 	);

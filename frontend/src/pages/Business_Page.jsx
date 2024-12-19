@@ -27,7 +27,10 @@ const Business_Page = () => {
 		setFilteredNews(filtered);
 	}, [searchTerm, articles]);
 
-	// Fetching articles from the API here
+	// Fetching articles from the API here	const [error, setError] = useState(null);
+
+
+	const [error, setError] = useState(null)
 	useEffect(() => {
 		axios
 			.get("http://localhost:5002/Homepage/Business")
@@ -39,15 +42,19 @@ const Business_Page = () => {
 				setLoading(false);
 			})
 			.catch((error) => {
-				console.error("Error fetching data:", error);
+				setError(`Error fetching data: ${error.message}`);
+			})
+			.finally(() => {
 				setLoading(false);
 			});
 	}, []);
 
 	return (
-		<Container>
-			{loading ? (
-				<CircularProgress />
+		<Container sx={{ minHeight: "100vh", minWidth: "100vh" }}>
+			{error ? (
+				<p>{error}</p>
+			) : loading ? (
+				<CircularProgress sx={{ color: "#aa3030" }} />
 			) : (
 				<div style={{ marginBottom: "100px" }}>
 					{/* Search Bar */}
