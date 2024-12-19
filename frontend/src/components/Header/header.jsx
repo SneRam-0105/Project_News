@@ -6,13 +6,16 @@ import logoForDark from '../../assets/LOGO_black.png';
 import logoForBright from '../../assets/LOGO.png';
 import ToggleDarkMode from '../Elements/DarkModeSwitch.jsx';
 
-const Header = ({ onClickCategory }) => {
+const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	const handleThemeChange = () => {
 		setIsDarkMode((prevMode) => !prevMode);
 	};
-
+	const handleLogout = (e) => {
+		logInHandler(false);
+		e.preventDefault();
+	}
 	return (
 		<Box
 			sx={{
@@ -100,13 +103,14 @@ const Header = ({ onClickCategory }) => {
 			<ToggleDarkMode handleThemeChange={handleThemeChange} />
 
 
-			<NavLink to="/Login" style={{ textDecoration: "none" }}>
+			<NavLink to="/UserLogin" style={{ textDecoration: "none" }}>
 				<Box sx={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
 				}}>
 					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
 					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
-						Login
+						{isLoggedIn ?
+							<Button sx={{ fontWeight: "bold", color: "#191919" }} variant="text" onClick={() => handleLogout()}>Logout</Button> : 'Login'}
 					</Typography>
 				</Box>
 			</NavLink>
