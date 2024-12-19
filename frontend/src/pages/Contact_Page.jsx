@@ -31,10 +31,20 @@ const useStyles = makeStyles({
     },
     width: "100%",
   },
+  message: {
+    marginTop: "15px",
+    color: "green",
+  },
+  errorMessage: {
+    marginTop: "15px",
+    color: "red",
+  },
 });
 
 const ContactForm = () => {
   const classes = useStyles();
+  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [error, setError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -50,10 +60,21 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    //
+    if (formData[name] != "") {
+      setSubmissionMessage("Message sent successfully !!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } else {
+      setSubmissionMessage("Sorry, There was a problem sending your message.");
+      setError(true);
+    }
   };
 
   return (
@@ -109,6 +130,15 @@ const ContactForm = () => {
             Submit
           </Button>
         </form>
+        {submissionMessage && (
+          <Typography
+            variant="body1"
+            className={error ? classes.errorMessage : classes.message}
+          >
+            {" "}
+            {submissionMessage}{" "}
+          </Typography>
+        )}
       </Paper>
     </div>
   );

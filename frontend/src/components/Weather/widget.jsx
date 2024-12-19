@@ -15,8 +15,6 @@ function Widget({
   iconUrl,
   submitButton,
   click,
-  description_news,
-  urlToImage_news,
 }) {
   return (
     <Box
@@ -86,11 +84,11 @@ function Widget({
         }}
       >
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="body2">{description_news}</Typography>
+          <Typography variant="body2"> ..</Typography>
         </CardContent>
         <CardMedia
           component="img"
-          image={urlToImage_news}
+          image=""
           alt="Card Image"
           sx={{
             width: 130,
