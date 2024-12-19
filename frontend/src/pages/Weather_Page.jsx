@@ -16,10 +16,11 @@ const WeatherApp = () => {
 				`http://localhost:5002/weather?city=${city}`
 			);
 			setWeather(response.data);
-			setLoading(false);
 		} catch (error) {
 			setError(`Error fetching data: ${error.message}`);
-			setLoading(false);
+		}
+		finally {
+			setLoading(false)
 		}
 	};
 
@@ -40,7 +41,7 @@ const WeatherApp = () => {
 	return (
 		<div>
 			{error ? <p>{error}</p> : loading ? (
-				<CircularProgress sx={{ color: "#aa3030", display:"flex"}} />
+				<CircularProgress sx={{ color: "#aa3030", display: "flex" }} />
 			) : (
 				<Widget
 					key={weather.cityName}

@@ -7,6 +7,7 @@ import {
 	Button,
 	TextField,
 } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
 
 function Widget({
 	cityName,
@@ -16,6 +17,8 @@ function Widget({
 	submitButton,
 	click,
 }) {
+	const { isDarkMode } = useOutletContext();
+
 	return (
 		<Box
 			sx={{
@@ -70,7 +73,14 @@ function Widget({
 				</div>
 			</Box>
 
-			<Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+			<Typography
+				variant="h6"
+				sx={{
+					fontWeight: "bold",
+					marginBottom: 2,
+					color: isDarkMode ? "#e6e6e6" : "#191919",
+				}}
+			>
 				Trending News
 			</Typography>
 
