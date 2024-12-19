@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logoForDark from '../../assets/LOGO_black.png';
 import logoForBright from '../../assets/LOGO.png';
 import ToggleDarkMode from '../Elements/DarkModeSwitch.jsx';
+import ThemedButton from '../Elements/ThemedButton.jsx';
 
 const Header = ({ onClickCategory }) => {
 	const [isDarkMode, setIsDarkMode] = useState(false);
@@ -25,7 +26,6 @@ const Header = ({ onClickCategory }) => {
 			}}
 		>
 
-
 			<NavLink to="/">
 				<Box
 					sx={{
@@ -36,14 +36,12 @@ const Header = ({ onClickCategory }) => {
 					}}
 				>
 					<img
-						src={isDarkMode ? logoForDark : logoForBright}
+						src={isDarkMode ? logoForDark : logoForBright} 
 						alt="Logo"
 						style={{ height: '60px', width: 'auto' }}
 					/>
 				</Box>
 			</NavLink>
-
-
 
 			<Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
 				<ul
@@ -68,44 +66,31 @@ const Header = ({ onClickCategory }) => {
 										: "#191919",
 							})}
 						>
-
 							<li style={{ margin: '9px 20px' }}>
-								<Button
-									variant="text"
+								<ThemedButton
+									isDarkMode={isDarkMode}
 									onClick={() => onClickCategory(category.toLowerCase())}
-									sx={{
-										color: 'inherit',
-										fontSize: 20,
-										fontWeight: 'bold',
-										textTransform: 'none',
-										'&:hover': {
-											color: '#aa3030',
-										},
-									}}
 								>
-									{category === 'IT'
-										? 'Information Technology'
-										: category === 'Edu'
-											? 'Education'
+									{category === 'IT' 
+										? 'Information Technology' 
+										: category === 'Edu' 
+											? 'Education' 
 											: category}
-								</Button>
-
+								</ThemedButton>
 							</li>
 						</NavLink>
 					))}
 				</ul>
 			</Box>
 
-
 			<ToggleDarkMode handleThemeChange={handleThemeChange} />
 
-
-			<NavLink to="/Login" style={{ textDecoration: "none" }}>
+			<NavLink to="/Login" style={{textDecoration:"none"}}>
 				<Box sx={{
 					display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
 				}}>
 					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
-					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
+					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold'}}>
 						Login
 					</Typography>
 				</Box>
