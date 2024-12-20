@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, CircularProgress } from "@mui/material";
 import { useOutletContext } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Education = () => {
 	const { isDarkMode } = useOutletContext();
@@ -43,20 +44,20 @@ const Education = () => {
 	if (loading) {
 		return (
 			<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							height: '100vh',
-							position: 'relative',
-						}}
-					>
-						<CircularProgress
-							sx={{
-								color: isDarkMode ? "e6e6e6" : "#aa3030",
-							}}
-						/>
-					</Box>
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '100vh',
+					position: 'relative',
+				}}
+			>
+				<CircularProgress
+					sx={{
+						color: isDarkMode ? "e6e6e6" : "#aa3030",
+					}}
+				/>
+			</Box>
 		);
 	}
 
@@ -86,7 +87,7 @@ const Education = () => {
 					align="center"
 					sx={{
 						color: darkModeStyles.color,
-						mb:4,
+						mb: 4,
 					}}
 				>
 					🎓 Categories 📚
@@ -247,20 +248,16 @@ const Education = () => {
 										{article.article_description.substring(0, 100)}...
 									</Typography>
 								</CardContent>
-								<Button
-									variant="contained"
-									fullWidth
-									sx={{
-										fontSize: "0.9rem",
-										backgroundColor: darkModeStyles.buttonBackground,
-										color: darkModeStyles.buttonColor,
-										borderRadius: 0,
-										"&:hover": {
-											backgroundColor: darkModeStyles.hoverBackground,
-											color: darkModeStyles.hoverColor,
-										},
-									}}
-								>
+								<Button component={Link} to={article.article_link} target="_blank" variant="Contained" sx={{
+									fontSize: "0.9rem",
+									backgroundColor: darkModeStyles.buttonBackground,
+									color: darkModeStyles.buttonColor,
+									borderRadius: 0,
+									"&:hover": {
+										backgroundColor: darkModeStyles.hoverBackground,
+										color: darkModeStyles.hoverColor,
+									},
+								}}>
 									Read More
 								</Button>
 							</Card>

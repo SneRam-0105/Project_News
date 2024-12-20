@@ -16,7 +16,7 @@ import defaultImage from "../../assets/default-img.jpg";
 import { useOutletContext } from "react-router-dom";
 
 function Articles() {
-const { isDarkMode } = useOutletContext();
+  const { isDarkMode } = useOutletContext();
   const [itNews, setITNews] = useState([]);
   const [businessNews, setBusinessNews] = useState([]);
   const [educationNews, setEducationNews] = useState([]);
@@ -277,7 +277,7 @@ const { isDarkMode } = useOutletContext();
                 {selectedArticle.title || selectedArticle.article_title}
               </Typography>
               <Typography variant="subtitle1">
-                {selectedArticle.description}
+                {selectedArticle.description || selectedArticle.article_description}
               </Typography>
               <Typography
                 onClick={() => window.open(selectedArticle.url, "_blank")}
