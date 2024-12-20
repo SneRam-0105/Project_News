@@ -1,77 +1,80 @@
 import {
-	Box,
-	Typography,
-	Card,
-	CardContent,
-	CardMedia,
-	Button,
-	TextField,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  TextField,
 } from "@mui/material";
+import DefaultImage from '/src/assets/trending-news.jpg';
 import { useOutletContext } from "react-router-dom";
 
 function Widget({
-	cityName,
-	temperature,
-	description,
-	iconUrl,
-	submitButton,
-	click,
+  cityName,
+  temperature,
+  description,
+  iconUrl,
+  submitButton,
+  click,
+  description_news,
+  urlToImage_news,
 }) {
 	const { isDarkMode } = useOutletContext();
 
-	return (
-		<Box
-			sx={{
-				padding: 1.5,
-				maxWidth: 350,
-			}}
-		>
-			<Box
-				sx={{
-					border: "1px solid #545454",
-					padding: 1.2,
-					marginBottom: 3,
-					borderRadius: 1,
-					backgroundColor: "#d4e5fa",
-				}}
-			>
-				<Typography variant="h4" sx={{ fontWeight: "bold" }}>
-					{cityName}
-				</Typography>
-				<Box
-					sx={{
-						height: "60px",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						marginBottom: "10px",
-					}}
-				>
-					<Typography
-						variant="h3"
-						sx={{ marginRight: 1, width: "120px", height: "240px" }}
-					>
-						<img src={iconUrl} alt="" style={{ height: "250px" }} />
-					</Typography>
-				</Box>
-				<Typography variant="h5">{temperature}°C</Typography>
-				<Typography variant="h6">{description}</Typography>
-				<div style={{ display: "flex" }}>
-					<TextField
-						label="Enter City"
-						variant="outlined"
-						onChange={click}
-						sx={{ width: "200px" }}
-					/>
-					<Button
-						onClick={submitButton}
-						variant="h3"
-						sx={{ color: "#aa3030", ml: "10px" }}
-					>
-						Search
-					</Button>
-				</div>
-			</Box>
+  return (
+    <Box
+      sx={{
+        padding: 1.5,
+        maxWidth: 350,
+      }}
+    >
+      <Box
+        sx={{
+          border: "1px solid #545454",
+          padding: 1.2,
+          marginBottom: 3,
+          borderRadius: 1,
+          backgroundColor: "#d4e5fa",
+        }}
+      >
+        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+          {cityName}
+        </Typography>
+        <Box
+          sx={{
+            height: "60px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "10px",
+          }}
+        >
+          <Typography
+            variant="h3"
+            sx={{ marginRight: 1, width: "120px", height: "240px" }}
+          >
+            <img src={iconUrl} alt="" style={{ height: "250px" }} />
+          </Typography>
+        </Box>
+        <Typography variant="h5">{temperature}°C</Typography>
+        <Typography variant="h6">{description}</Typography>
+        <div style={{ display: "flex" }}>
+          <TextField
+            label="Enter City"
+            variant="outlined"
+            onChange={click}
+            sx={{ width: "200px" }}
+          />
+          <Button
+            onClick={submitButton}
+            variant="h3"
+            sx={{ color: "#aa3030", ml: "10px" }}
+          >
+            Search
+          </Button>
+        </div>
+      </Box>
 
 			<Typography
 				variant="h6"

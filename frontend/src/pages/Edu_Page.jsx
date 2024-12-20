@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
 import { useOutletContext } from "react-router-dom";
 
+import { Link } from 'react-router-dom';
 
 const Education = () => {
 const { isDarkMode } = useOutletContext();
@@ -42,7 +43,7 @@ const { isDarkMode } = useOutletContext();
 						mb: 2,
 					}}
 				>
-					Education
+					🎓 Categories 📚
 				</Typography>
 
 				{/* Faculty Cards */}

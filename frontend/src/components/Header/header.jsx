@@ -6,33 +6,47 @@ import logoForBright from '../../assets/LOGO.png';
 import ToggleDarkMode from '../Elements/DarkModeSwitch.jsx';
 import ThemedButton from '../Elements/ThemedButton.jsx';
 
-const Header = ({ isDarkMode, handleThemeChange, onClickCategory }) => {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        padding: '8px 20px',
-        backgroundColor: isDarkMode ? '#080808' : '#f0f0f0',
-      }}
-    >
-      <NavLink to="/">
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: 65,
-          }}
-        >
-          <img
-            src={isDarkMode ? logoForDark : logoForBright}
-            alt="Logo"
-            style={{ height: '60px', width: 'auto' }}
-          />
-        </Box>
-      </NavLink>
+const Header = ({ onClickCategory, isLoggedIn, logInHandler, isDarkMode, handleThemeChange }) => {
+	const [isDarkMode, setIsDarkMode] = useState(false);
+
+	const handleThemeChange = () => {
+		setIsDarkMode((prevMode) => !prevMode);
+	};
+const handleLogout = (e) => {
+		logInHandler(false);
+		e.preventDefault();
+	}
+	return (
+		<Box
+			sx={{
+				display: 'flex',
+				justifyContent: 'space-evenly',
+				alignItems: 'center',
+				padding: '8px 20px',
+				marginBottom: '35px',
+				backgroundColor: isDarkMode ? '#080808' : '#f0f0f0',
+			}}
+		>
+
+
+			<NavLink to="/">
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						height: 65,
+					}}
+				>
+					<img
+						src={isDarkMode ? logoForDark : logoForBright}
+						alt="Logo"
+						style={{ height: '60px', width: 'auto' }}
+					/>
+				</Box>
+			</NavLink>
+
+
 
       <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
         <ul
@@ -74,20 +88,22 @@ const Header = ({ isDarkMode, handleThemeChange, onClickCategory }) => {
         </ul>
       </Box>
 
-      <ToggleDarkMode handleThemeChange={handleThemeChange} />
+			<ToggleDarkMode handleThemeChange={handleThemeChange} />
 
-      <NavLink to="/Login" style={{ textDecoration: "none" }}>
-        <Box sx={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
-        }}>
-          <AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
-          <Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
-            Login
-          </Typography>
-        </Box>
-      </NavLink>
-    </Box>
-  );
+
+			<NavLink to="/UserLogin" style={{ textDecoration: "none" }}>
+				<Box sx={{
+					display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 'bold',
+				}}>
+					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
+					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
+						{isLoggedIn ?
+							<Button sx={{ fontWeight: "bold", color: "#191919" }} variant="text" onClick={() => handleLogout()}>Logout</Button> : 'Login'}
+					</Typography>
+				</Box>
+			</NavLink>
+		</Box >
+	);
 };
 
 export default Header;
