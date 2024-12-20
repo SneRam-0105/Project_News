@@ -48,7 +48,7 @@ const App = () => {
 				<Route path="Advertise" element={<Advertise />} />
 				<Route path="Terms" element={<Terms />} />
 				<Route path="PrivacyPolicy" element={<Privacy_Policy />} />
-<Route path="Contact" element={<ContactForm />} />
+				<Route path="Contact" element={<ContactForm />} />
 			</Route>
 		)
 	);
