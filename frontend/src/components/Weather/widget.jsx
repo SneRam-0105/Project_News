@@ -7,6 +7,8 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+import DefaultImage from '/src/assets/trending-news.jpg';
+import { useOutletContext } from "react-router-dom";
 
 function Widget({
   cityName,
@@ -15,7 +17,11 @@ function Widget({
   iconUrl,
   submitButton,
   click,
+
 }) {
+	const { isDarkMode } = useOutletContext();
+
+
   return (
     <Box
       sx={{
@@ -70,34 +76,32 @@ function Widget({
         </div>
       </Box>
 
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2, color: isDarkMode ? "#e6e6e6" : "#191919" }}>
         Trending News
       </Typography>
-
-      <Card
-        sx={{
-          display: "flex",
-          marginBottom: 2,
-          boxShadow: 1,
-          borderRadius: 1,
-          backgroundColor: "grey.300",
-        }}
-      >
+      <Card sx={{
+        display: "flex",
+        marginBottom: 2,
+        boxShadow: 1,
+        borderRadius: 1,
+        backgroundColor: "grey.200",
+      }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="body2"> ..</Typography>
+          <Typography variant="subtitle1">Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
         </CardContent>
         <CardMedia
           component="img"
-          image=""
-          alt="Card Image"
+          image={DefaultImage}
+          alt="News Image"
           sx={{
-            width: 130,
+            width: 170,
             height: 230,
             borderRadius: 1,
             objectFit: "inherit",
           }}
         />
       </Card>
+
       <Card>
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -112,7 +116,7 @@ function Widget({
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </Card>
     </Box>
