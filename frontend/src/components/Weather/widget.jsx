@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import DefaultImage from '/src/assets/trending-news.jpg';
+import { useOutletContext } from "react-router-dom";
 
 function Widget({
   cityName,
@@ -16,9 +17,11 @@ function Widget({
   iconUrl,
   submitButton,
   click,
-  description_news,
-  urlToImage_news,
+
 }) {
+	const { isDarkMode } = useOutletContext();
+
+
   return (
     <Box
       sx={{
@@ -73,7 +76,7 @@ function Widget({
         </div>
       </Box>
 
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2, color: isDarkMode ? "#e6e6e6" : "#191919" }}>
         Trending News
       </Typography>
       <Card sx={{
@@ -81,10 +84,10 @@ function Widget({
         marginBottom: 2,
         boxShadow: 1,
         borderRadius: 1,
-        backgroundColor: "grey.200",
+        backgroundColor: isDarkMode ? "#1e1e1e" : "#fff",
       }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="subtitle1">Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
+          <Typography variant="subtitle1" sx={{color:isDarkMode ? "#e6e6e6" : "#191919"}}>Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
         </CardContent>
         <CardMedia
           component="img"
@@ -97,12 +100,11 @@ function Widget({
             objectFit: "inherit",
           }}
         />
-
       </Card>
 
-      <Card>
+      <Card sx={{ backgroundColor: isDarkMode ? "#1e1e1e" : "#e6e6e6",}}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold" , color: isDarkMode ? "#e6e6e6" : "#191919"}}>
             Watch the news on YouTube
           </Typography>
         </CardContent>
@@ -114,7 +116,7 @@ function Widget({
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </Card>
     </Box>

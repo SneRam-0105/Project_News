@@ -1,45 +1,112 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, CircularProgress } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
 
 const Education = () => {
+	const { isDarkMode } = useOutletContext();
 	const [faculties, setFaculties] = useState([]);
 	const [articles, setArticles] = useState([]);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch("http://localhost:5002/Homepage/Education/faculties")
-			.then(response => response.json())
-			.then(data => setFaculties(data))
-			.catch(error => console.error("Failed to fetch faculties:", error));
+		const fetchData = async () => {
+			try {
+				const facultiesResponse = await fetch("http://localhost:5002/Homepage/Education/faculties");
+				const facultiesData = await facultiesResponse.json();
+				setFaculties(facultiesData);
 
-		fetch("http://localhost:5002/Homepage/Education/articles")
-			.then(response => response.json())
-			.then(data => setArticles(data))
-			.catch(error => console.error("Failed to fetch articles:", error));
+				const articlesResponse = await fetch("http://localhost:5002/Homepage/Education/articles");
+				const articlesData = await articlesResponse.json();
+				setArticles(articlesData);
+			} catch (error) {
+				setError(`Failed to fetch data: ${error.message}`);
+			} finally {
+				setLoading(false);
+			}
+		};
 
-
+		fetchData();
 	}, []);
+
+	// Conditional styles for dark mode
+	const darkModeStyles = {
+		background: isDarkMode ? "#121212" : "#fff",
+		color: isDarkMode ? "#e0e0e0" : "#191919",
+		cardBackground: isDarkMode ? "#1e1e1e" : "#f2f4f5",
+		buttonBackground: isDarkMode ? "#aa3030" : "#fff",
+		buttonColor: isDarkMode ? "#e6e6e6" : "#aa3030",
+		hoverBackground: isDarkMode ? "#555" : "#aa3030",
+		hoverColor: isDarkMode ? "#fff" : "#fff",
+	};
+
+	if (loading) {
+		return (
+			<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100vh',
+							position: 'relative',
+						}}
+					>
+					<Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress sx={{ color: "#aa3030" }} />
+          </Box>
+					</Box>
+		);
+	}
+
+	if (error) {
+		return (
+			<Box
+				sx={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					height: "100vh",
+					background: darkModeStyles.background,
+				}}
+			>
+				<Typography variant="h6" sx={{ color: darkModeStyles.color }}>
+					{error}
+				</Typography>
+			</Box>
+		);
+	}
 
 	return (
 		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%" }}>
-			<Box sx={{ padding: 6, background: '#fff' }}>
-
-				<Typography variant="h4" align="center" sx={{
-					color: "#aa3030", mb: 2
-				}}>
+			<Box sx={{ padding: 6, background: darkModeStyles.background }}>
+				<Typography
+					variant="h4"
+					align="center"
+					sx={{
+						color: darkModeStyles.color,
+						mb:4,
+					}}
+				>
 					🎓 Categories 📚
 				</Typography>
 
-				{/* Ensuring faculty cards are the same size */}
+				{/* Faculty Cards */}
 				<Grid2
 					container
 					spacing={4}
 					sx={{
-						justifyContent: { xs: 'flex-start', md: 'center' },
-						alignItems: { xs: 'flex-start', md: 'center' }
+						justifyContent: { xs: "flex-start", md: "center" },
+						alignItems: { xs: "flex-start", md: "center" },
 					}}
 				>
-					{faculties.map((faculty) => (
+					{faculties?.map((faculty) => (
 						<Grid2 item xs={12} sm={6} md={4} key={faculty.educationId}>
 							<Card
 								sx={{
@@ -48,7 +115,7 @@ const Education = () => {
 									justifyContent: "space-between",
 									height: "200px",
 									width: "200px",
-									backgroundColor: "#fff",
+									backgroundColor: darkModeStyles.cardBackground,
 									boxShadow: 3,
 									borderRadius: "4px",
 									transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -69,6 +136,7 @@ const Education = () => {
 											lineHeight: 1.3,
 											mb: 1,
 											textAlign: "center",
+											color: darkModeStyles.color,
 										}}
 									>
 										{faculty.faculty}
@@ -80,6 +148,7 @@ const Education = () => {
 											fontSize: "1rem",
 											textAlign: "center",
 											mb: 2,
+											color: darkModeStyles.color,
 										}}
 									>
 										Articles: {faculty.articles_number}
@@ -93,12 +162,12 @@ const Education = () => {
 									fullWidth
 									sx={{
 										fontSize: "0.9rem",
-										backgroundColor: "#fff",
-										color: "#aa3030",
+										backgroundColor: darkModeStyles.buttonBackground,
+										color: darkModeStyles.buttonColor,
 										borderRadius: 0,
 										"&:hover": {
-											backgroundColor: "#aa3030",
-											color: "#fff",
+											backgroundColor: darkModeStyles.hoverBackground,
+											color: darkModeStyles.hoverColor,
 										},
 									}}
 								>
@@ -109,19 +178,25 @@ const Education = () => {
 					))}
 				</Grid2>
 
-				<Typography variant="h4" align="center" sx={{ mt: 6, mb: 1, color: "#aa3030" }}>
+				{/* Articles */}
+				<Typography
+					variant="h4"
+					align="center"
+					sx={{ mt: 6, mb: 4, color: darkModeStyles.color }}
+				>
+					Articles
 				</Typography>
 
 				<Grid2
 					container
 					spacing={4}
 					sx={{
-						justifyContent: { xs: 'flex-start', md: 'center' },
-						alignItems: { xs: 'flex-start', md: 'center' },
-						mb: 5
+						justifyContent: { xs: "flex-start", md: "center" },
+						alignItems: { xs: "flex-start", md: "center" },
+						mb: 5,
 					}}
 				>
-					{articles.map((article) => (
+					{articles?.map((article) => (
 						<Grid2 item xs={12} sm={6} md={4} key={article.articleId}>
 							<Card
 								sx={{
@@ -132,7 +207,7 @@ const Education = () => {
 									mb: 3,
 									height: "100%",
 									width: "550px",
-									backgroundColor: "#fff",
+									backgroundColor: darkModeStyles.cardBackground,
 									boxShadow: 3,
 									borderRadius: "4px",
 									transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
@@ -157,6 +232,7 @@ const Education = () => {
 											fontSize: "1.2rem",
 											fontWeight: "bold",
 											lineHeight: 1.3,
+											color: darkModeStyles.color,
 										}}
 									>
 										{article.article_title}
@@ -170,19 +246,32 @@ const Education = () => {
 											overflow: "hidden",
 											WebkitLineClamp: 3,
 											fontSize: "0.9rem",
+											color: darkModeStyles.color,
 										}}
 									>
 										{article.article_description.substring(0, 100)}...
 									</Typography>
 								</CardContent>
-								<Button component={Link} to={article.article_link} target="_blank" variant="outlined" color="#aa3030" sx={{ mt: 2 }}>
+								<Button
+									variant="contained"
+									fullWidth
+									sx={{
+										fontSize: "0.9rem",
+										backgroundColor: darkModeStyles.buttonBackground,
+										color: darkModeStyles.buttonColor,
+										borderRadius: 0,
+										"&:hover": {
+											backgroundColor: darkModeStyles.hoverBackground,
+											color: darkModeStyles.hoverColor,
+										},
+									}}
+								>
 									Read More
 								</Button>
 							</Card>
 						</Grid2>
 					))}
 				</Grid2>
-
 			</Box>
 		</div>
 	);
