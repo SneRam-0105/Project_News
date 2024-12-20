@@ -5,6 +5,7 @@ Welcome to **EduNews**, a modern news portal designed to bring you the latest up
 ---
 
 ## 📦 Features:
+
 - **Business**: Stay updated with the latest trends in the business world.
 - **IT**: Get the newest insights and developments in Information Technology.
 - **Education**: Discover articles related to education and academic research.
