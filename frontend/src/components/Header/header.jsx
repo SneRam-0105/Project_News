@@ -90,7 +90,7 @@ const Header = ({ onClickCategory, isLoggedIn, logInHandler, isDarkMode, handleT
 					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
 					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
 						{isLoggedIn ?
-							<Button sx={{ fontWeight: "bold", color: "#191919" }} variant="text" onClick={handleLogout}>Logout</Button> : 'Login'}
+							<Button sx={{ fontWeight: "bold", color: isDarkMode ? "#e6e6e6" : "#191919" }} variant="text" onClick={handleLogout}>Logout</Button> : 'Login'}
 					</Typography>
 				</Box>
 			</NavLink>

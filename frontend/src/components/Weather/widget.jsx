@@ -84,10 +84,10 @@ function Widget({
         marginBottom: 2,
         boxShadow: 1,
         borderRadius: 1,
-        backgroundColor: "grey.200",
+        backgroundColor: isDarkMode ? "#1e1e1e" : "#e6e6e6",
       }}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="subtitle1">Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
+          <Typography variant="subtitle1" sx={{color:isDarkMode ? "#e6e6e6" : "#191919"}}>Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
         </CardContent>
         <CardMedia
           component="img"
@@ -102,9 +102,9 @@ function Widget({
         />
       </Card>
 
-      <Card>
+      <Card sx={{ backgroundColor: isDarkMode ? "#1e1e1e" : "#e6e6e6",}}>
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold" , color: isDarkMode ? "#e6e6e6" : "#191919"}}>
             Watch the news on YouTube
           </Typography>
         </CardContent>

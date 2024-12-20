@@ -96,7 +96,7 @@ const ArticleCard = ({
 					mt: 2,
 					mb: 3,
 					height: "100%",
-					backgroundColor: isDarkMode ? "#2e2e2e" : "#e6e6e6",
+					backgroundColor: isDarkMode ? "#1e1e1e" : "#e6e6e6",
 					color: isDarkMode ? "#e6e6e6" : "#191919",
 					boxShadow: 3,
 					borderRadius: "1px",
