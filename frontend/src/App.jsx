@@ -16,6 +16,7 @@ import Advertise from "./pages/Advertise";
 import Terms from "./pages/Terms";
 import Privacy_Policy from "./pages/Privacy_Policy";
 import { useState } from "react";
+import ContactForm from "./pages/Contact_Page";
 
 const App = () => {
 
@@ -47,7 +48,7 @@ const App = () => {
 				<Route path="Advertise" element={<Advertise />} />
 				<Route path="Terms" element={<Terms />} />
 				<Route path="PrivacyPolicy" element={<Privacy_Policy />} />
-
+<Route path="Contact" element={<ContactForm />} />
 			</Route>
 		)
 	);

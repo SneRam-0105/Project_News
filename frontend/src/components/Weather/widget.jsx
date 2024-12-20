@@ -17,10 +17,10 @@ function Widget({
   iconUrl,
   submitButton,
   click,
-  description_news,
-  urlToImage_news,
+
 }) {
 	const { isDarkMode } = useOutletContext();
+
 
   return (
     <Box
@@ -76,63 +76,51 @@ function Widget({
         </div>
       </Box>
 
-			<Typography
-				variant="h6"
-				sx={{
-					fontWeight: "bold",
-					marginBottom: 2,
-					color: isDarkMode ? "#e6e6e6" : "#191919",
-				}}
-			>
-				Trending News
-			</Typography>
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2, color: isDarkMode ? "#e6e6e6" : "#191919" }}>
+        Trending News
+      </Typography>
+      <Card sx={{
+        display: "flex",
+        marginBottom: 2,
+        boxShadow: 1,
+        borderRadius: 1,
+        backgroundColor: "grey.200",
+      }}>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography variant="subtitle1">Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
+        </CardContent>
+        <CardMedia
+          component="img"
+          image={DefaultImage}
+          alt="News Image"
+          sx={{
+            width: 170,
+            height: 230,
+            borderRadius: 1,
+            objectFit: "inherit",
+          }}
+        />
+      </Card>
 
-			<Card
-				sx={{
-					display: "flex",
-					marginBottom: 2,
-					boxShadow: 1,
-					borderRadius: 1,
-					backgroundColor: "grey.300",
-				}}
-			>
-				<CardContent sx={{ flexGrow: 1 }}>
-					<Typography variant="body2">
-						Indian tech services firms have set up innovation and delivery
-						centres
-					</Typography>
-				</CardContent>
-				<CardMedia
-					component="img"
-					image="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM="
-					alt="Card Image"
-					sx={{
-						width: 120,
-						height: 200,
-						borderRadius: 1,
-						objectFit: "inherit",
-					}}
-				/>
-			</Card>
-			<Card>
-				<CardContent sx={{ flexGrow: 1 }}>
-					<Typography variant="h6" sx={{ fontWeight: "bold" }}>
-						Watch the news on YouTube
-					</Typography>
-				</CardContent>
-				<iframe
-					width="500"
-					height="350"
-					src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g"
-					title="YouTube video player"
-					frameBorder="0"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-					referrerPolicy="strict-origin-when-cross-origin"
-					allowfullscreen
-				></iframe>
-			</Card>
-		</Box>
-	);
+      <Card>
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Watch the news on YouTube
+          </Typography>
+        </CardContent>
+        <iframe
+          width="500"
+          height="350"
+          src="https://www.youtube.com/embed/AJDWzCPZZbA?si=VF_WHizCN2koBg-g"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </Card>
+    </Box>
+  );
 }
 
 export default Widget;

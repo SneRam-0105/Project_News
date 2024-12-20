@@ -8,9 +8,6 @@ import ThemedButton from '../Elements/ThemedButton.jsx';
 
 const Header = ({ onClickCategory, isLoggedIn, logInHandler, isDarkMode, handleThemeChange }) => {
 
-	// handleThemeChange is passed as a prop, no need to define useState for isDarkMode
-	// Remove the redundant useState code
-
 	const handleLogout = (e) => {
 		logInHandler(false);
 		e.preventDefault();
