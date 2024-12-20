@@ -36,7 +36,7 @@ export default function Footer({ isDarkMode }) {
             <Link href="/terms" color="inherit" underline="hover" sx={{ display: "block", mb: 1 }}>
               Terms of Service
             </Link>
-            <Link href="/privacy" color="inherit" underline="hover" sx={{ display: "block" }}>
+            <Link href="/PrivacyPolicy" color="inherit" underline="hover" sx={{ display: "block" }}>
               Privacy Policy
             </Link>
           </Grid>
