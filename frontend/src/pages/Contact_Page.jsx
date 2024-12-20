@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import { TextField, Button, Paper, Typography } from "@mui/material";
-
+import { useState } from "react";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -53,7 +52,6 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    //
   };
 
   return (

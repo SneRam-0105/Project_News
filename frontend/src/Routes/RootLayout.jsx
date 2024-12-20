@@ -2,14 +2,14 @@ import Footer from "../components/Footer/footer";
 import Header from "../components/Header/header";
 import { Outlet } from "react-router-dom";
 
-const RootLayout = ({ isLoggedIn, logInHandler }) => {
-	return (
-		<div className="Header">
-			<Header isLoggedIn={isLoggedIn} logInHandler={logInHandler} />
-			<Outlet />
-			<Footer />
-		</div>
-	);
+const RootLayout = ({ isDarkMode, handleThemeChange, isLoggedIn, logInHandler }) => {
+  return (
+    <div className={`RootLayout ${isDarkMode ? 'dark' : 'light'}`}>
+      <Header isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} isLoggedIn={isLoggedIn} logInHandler={logInHandler} />
+      <Outlet context={{ isDarkMode }} />
+      <Footer isDarkMode={isDarkMode} />
+    </div>
+  );
 };
 
 export default RootLayout;

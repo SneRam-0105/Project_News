@@ -19,7 +19,7 @@ const UserLogin = ({ logInHandler }) => {
 
     }
     else {
-      // Add your login logic here
+
       alert("Invalid credentials! Please try again.");
 
     }

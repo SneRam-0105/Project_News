@@ -1,21 +1,18 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import { Button, Typography, Box } from '@mui/material';
+import { Typography, Box, Button } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logoForDark from '../../assets/LOGO_black.png';
 import logoForBright from '../../assets/LOGO.png';
 import ToggleDarkMode from '../Elements/DarkModeSwitch.jsx';
+import ThemedButton from '../Elements/ThemedButton.jsx';
 
-const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
-	const [isDarkMode, setIsDarkMode] = useState(false);
+const Header = ({ onClickCategory, isLoggedIn, logInHandler, isDarkMode, handleThemeChange }) => {
 
-	const handleThemeChange = () => {
-		setIsDarkMode((prevMode) => !prevMode);
-	};
 	const handleLogout = (e) => {
 		logInHandler(false);
 		e.preventDefault();
-	}
+	};
+
 	return (
 		<Box
 			sx={{
@@ -23,10 +20,9 @@ const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
 				justifyContent: 'space-evenly',
 				alignItems: 'center',
 				padding: '8px 20px',
-				backgroundColor: isDarkMode ? '#191919' : '#f0f0f0',
+				backgroundColor: isDarkMode ? '#080808' : '#f0f0f0',
 			}}
 		>
-
 
 			<NavLink to="/">
 				<Box
@@ -44,8 +40,6 @@ const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
 					/>
 				</Box>
 			</NavLink>
-
-
 
 			<Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
 				<ul
@@ -66,41 +60,28 @@ const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
 								color: isActive
 									? "#aa3030"
 									: isDarkMode
-										? "#e6e6e6"
-										: "#191919",
+									? "#e6e6e6"
+									: "#191919",
 							})}
 						>
-
 							<li style={{ margin: '9px 20px' }}>
-								<Button
-									variant="text"
+								<ThemedButton
+									isDarkMode={isDarkMode}
 									onClick={() => onClickCategory(category.toLowerCase())}
-									sx={{
-										color: 'inherit',
-										fontSize: 20,
-										fontWeight: 'bold',
-										textTransform: 'none',
-										'&:hover': {
-											color: '#aa3030',
-										},
-									}}
 								>
 									{category === 'IT'
 										? 'Information Technology'
 										: category === 'Edu'
-											? 'Education'
-											: category}
-								</Button>
-
+										? 'Education'
+										: category}
+								</ThemedButton>
 							</li>
 						</NavLink>
 					))}
 				</ul>
 			</Box>
 
-
 			<ToggleDarkMode handleThemeChange={handleThemeChange} />
-
 
 			<NavLink to="/UserLogin" style={{ textDecoration: "none" }}>
 				<Box sx={{
@@ -109,11 +90,11 @@ const Header = ({ onClickCategory, isLoggedIn, logInHandler }) => {
 					<AccountCircle fontSize="large" sx={{ mx: '10px', color: '#aa3030' }} />
 					<Typography variant="h6" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", fontWeight: 'bold' }}>
 						{isLoggedIn ?
-							<Button sx={{ fontWeight: "bold", color: "#191919" }} variant="text" onClick={() => handleLogout()}>Logout</Button> : 'Login'}
+							<Button sx={{ fontWeight: "bold", color: "#191919" }} variant="text" onClick={handleLogout}>Logout</Button> : 'Login'}
 					</Typography>
 				</Box>
 			</NavLink>
-		</Box >
+		</Box>
 	);
 };
 

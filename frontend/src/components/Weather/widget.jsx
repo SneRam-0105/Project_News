@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import DefaultImage from '/src/assets/trending-news.jpg';
+import { useOutletContext } from "react-router-dom";
 
 function Widget({
   cityName,
@@ -16,9 +17,11 @@ function Widget({
   iconUrl,
   submitButton,
   click,
-  description_news,
-  urlToImage_news,
+
 }) {
+	const { isDarkMode } = useOutletContext();
+
+
   return (
     <Box
       sx={{
@@ -73,7 +76,7 @@ function Widget({
         </div>
       </Box>
 
-      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2 }}>
+      <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 2, color: isDarkMode ? "#e6e6e6" : "#191919" }}>
         Trending News
       </Typography>
       <Card sx={{
@@ -97,7 +100,6 @@ function Widget({
             objectFit: "inherit",
           }}
         />
-
       </Card>
 
       <Card>
@@ -114,7 +116,7 @@ function Widget({
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </Card>
     </Box>
