@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia } from "@mui/material";
+import { Box, Typography, Card, CardContent, Button, Grid2, CardMedia, CircularProgress } from "@mui/material";
 import { useOutletContext } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
-
 const Education = () => {
-const { isDarkMode } = useOutletContext();
+	const { isDarkMode } = useOutletContext();
 	const [faculties, setFaculties] = useState([]);
 	const [articles, setArticles] = useState([]);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetch("http://localhost:5002/Homepage/Education/faculties")
-			.then((response) => response.json())
-			.then((data) => setFaculties(data))
-			.catch((error) => console.error("Failed to fetch faculties:", error));
+		const fetchData = async () => {
+			try {
+				const facultiesResponse = await fetch("http://localhost:5002/Homepage/Education/faculties");
+				const facultiesData = await facultiesResponse.json();
+				setFaculties(facultiesData);
 
-		fetch("http://localhost:5002/Homepage/Education/articles")
-			.then((response) => response.json())
-			.then((data) => setArticles(data))
-			.catch((error) => console.error("Failed to fetch articles:", error));
+				const articlesResponse = await fetch("http://localhost:5002/Homepage/Education/articles");
+				const articlesData = await articlesResponse.json();
+				setArticles(articlesData);
+			} catch (error) {
+				setError(`Failed to fetch data: ${error.message}`);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchData();
 	}, []);
 
 	// Conditional styles for dark mode
@@ -32,6 +40,44 @@ const { isDarkMode } = useOutletContext();
 		hoverColor: isDarkMode ? "#fff" : "#fff",
 	};
 
+	if (loading) {
+		return (
+			<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100vh',
+							position: 'relative',
+						}}
+					>
+						<CircularProgress
+							sx={{
+								color: isDarkMode ? "e6e6e6" : "#aa3030",
+							}}
+						/>
+					</Box>
+		);
+	}
+
+	if (error) {
+		return (
+			<Box
+				sx={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					height: "100vh",
+					background: darkModeStyles.background,
+				}}
+			>
+				<Typography variant="h6" sx={{ color: darkModeStyles.color }}>
+					{error}
+				</Typography>
+			</Box>
+		);
+	}
+
 	return (
 		<div style={{ marginBottom: "20px", margin: 0, padding: 0, width: "100%" }}>
 			<Box sx={{ padding: 6, background: darkModeStyles.background }}>
@@ -40,7 +86,7 @@ const { isDarkMode } = useOutletContext();
 					align="center"
 					sx={{
 						color: darkModeStyles.color,
-						mb: 2,
+						mb:4,
 					}}
 				>
 					🎓 Categories 📚
@@ -55,7 +101,7 @@ const { isDarkMode } = useOutletContext();
 						alignItems: { xs: "flex-start", md: "center" },
 					}}
 				>
-					{faculties.map((faculty) => (
+					{faculties?.map((faculty) => (
 						<Grid2 item xs={12} sm={6} md={4} key={faculty.educationId}>
 							<Card
 								sx={{
@@ -131,7 +177,7 @@ const { isDarkMode } = useOutletContext();
 				<Typography
 					variant="h4"
 					align="center"
-					sx={{ mt: 6, mb: 1, color: darkModeStyles.color }}
+					sx={{ mt: 6, mb: 4, color: darkModeStyles.color }}
 				>
 					Articles
 				</Typography>
@@ -145,7 +191,7 @@ const { isDarkMode } = useOutletContext();
 						mb: 5,
 					}}
 				>
-					{articles.map((article) => (
+					{articles?.map((article) => (
 						<Grid2 item xs={12} sm={6} md={4} key={article.articleId}>
 							<Card
 								sx={{

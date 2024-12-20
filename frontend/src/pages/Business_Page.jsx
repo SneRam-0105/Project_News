@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import ArticleCard from "../components/Article/ArticleCard";
 
+
 const Business_Page = () => {
 	const { isDarkMode } = useOutletContext();
 	const [articles, setArticles] = useState([]);
@@ -41,12 +42,27 @@ const Business_Page = () => {
 	}, []);
 
 	return (
-		<div style={{ backgroundColor: isDarkMode ? "#191919" : "#e6e6e6", paddingBottom:"70px" }}>
+		<div style={{ backgroundColor: isDarkMode ? "#191919" : "#e6e6e6", paddingBottom: "70px" }}>
 			<Container sx={{ minHeight: "100vh", minWidth: "100vh" }}>
 				{error ? (
 					<p>{error}</p>
 				) : loading ? (
-					<CircularProgress sx={{ color: "#aa3030"}} />
+					<Box
+						sx={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							height: '100vh', // Set to full viewport height or adjust as needed
+							position: 'relative',
+						}}
+					>
+						<CircularProgress
+							sx={{
+								color: "#aa3030",
+							}}
+						/>
+					</Box>
+
 				) : (
 					<div style={{ marginBottom: "100px" }}>
 						{/* Search Bar */}
@@ -60,7 +76,7 @@ const Business_Page = () => {
 								InputProps={{
 									startAdornment: (
 										<InputAdornment position="start">
-											<SearchIcon sx={{color: isDarkMode ? "#e6e6e6" : "#191919"}}/>
+											<SearchIcon sx={{ color: isDarkMode ? "#e6e6e6" : "#191919" }} />
 										</InputAdornment>
 									),
 									style: {
