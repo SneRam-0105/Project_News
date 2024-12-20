@@ -57,7 +57,7 @@ const ArticleCard = ({
 	};
 
 	const handleLike = () => {
-		const newLikes = liked ? likes + 1 : likes - 1;
+		const newLikes = liked ? likes - 1 : likes + 1;
 		localStorage.setItem(`likes-${id}`, JSON.stringify(newLikes));
 		setLikes(newLikes);
 		setLiked(!liked);
@@ -149,13 +149,13 @@ const ArticleCard = ({
 						display="block"
 						sx={{
 							mb: 1,
-							fontSize: "0.05rem",
+							fontSize: "0.8rem",
 							color: isDarkMode ? "#e6e6e6" : "#191919",
 						}}
 					>
 						{author && <strong>By {author}</strong>} | {date}
 					</Typography>
-					<Divider variant="middle" sx={{mb:2}}/>
+					<Divider variant="middle" sx={{ mb: 2 }} />
 					<Typography
 						variant="body2"
 						color="textSecondary"
@@ -165,7 +165,7 @@ const ArticleCard = ({
 							overflow: "hidden",
 							WebkitLineClamp: 3,
 							mb: 0.6,
-							fontSize: "0.7rem",
+							fontSize: "0.9rem",
 							color: isDarkMode ? "#bbb" : "#191919",
 						}}
 					>
@@ -196,8 +196,7 @@ const ArticleCard = ({
 					{/* Share Button */}
 					<Tooltip title="Share">
 						<IconButton onClick={handleShare}>
-							<ShareIcon sx={{ color: isDarkMode ? "#e6e6e6" : "#191919" }}
-							/>
+							<ShareIcon sx={{ color: isDarkMode ? "#e6e6e6" : "#191919" }} />
 						</IconButton>
 					</Tooltip>
 				</CardContent>
@@ -209,9 +208,9 @@ const ArticleCard = ({
 					target="_blank"
 					rel="noopener noreferrer"
 					sx={{
-						fontSize: "0.9rem",
-						backgroundColor: isDarkMode ? "#333" : "#fff",  // Button color change for dark mode
-						color: isDarkMode ? "#fff" : "#aa3030",  // Adjust text color based on mode
+						fontSize: "1rem",
+						backgroundColor: isDarkMode ? "#333" : "#fff",
+						color: isDarkMode ? "#fff" : "#aa3030",
 						"&:hover": {
 							backgroundColor: "#aa3030",
 							color: "#fff",
@@ -220,7 +219,8 @@ const ArticleCard = ({
 				>
 					Read More
 				</Button>
-			</Card ></div>
+			</Card>
+		</div>
 	);
 };
 

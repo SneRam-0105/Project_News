@@ -1,4 +1,5 @@
 import { Box, Typography, Link, Grid, Divider } from "@mui/material";
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -18,46 +19,52 @@ export default function Footer({ isDarkMode }) {
 				<div style={{ display: "flex", justifyContent: "center", gap: "50vh", paddingTop: "30px" }}>
 					<Grid item xs={12} sm={4}>
 						<Typography variant="h6" sx={{ color: "#aa3030 !important", mb: 2 }}>
-							<Link
-								href="/Contact"
-								color="inherit"
-								underline="hover"
-								sx={{ display: "block", mb: 1 }}
+							<NavLink
+								to="/Contact"
+								style={{ textDecoration: 'none' }}
 							>
-								Contact Us
-							</Link>
+								<Typography
+									variant="h6"
+									sx={{
+										color: "#aa3030",
+										mb: 1,
+										'&:hover': {
+											textDecoration: 'underline', // Ensure text is underlined on hover
+										},
+									}}
+								>
+									Contact Us
+								</Typography>
+
+							</NavLink>
 						</Typography>
 						<Typography>Email: edunews@newspaper.com</Typography>
 						<Typography>Address: 123 Helsinki, Finland</Typography>
 					</Grid>
 					<Grid item xs={12} sm={4}>
-						<Typography
-							variant="h6"
-							sx={{ color: "#aa3030 !important", mb: 2 }}
-						>
-							<Link
-								href="/Contact"
-								color="inherit"
-								underline="hover"
-								sx={{ display: "block", mb: 1 }}
-							>
-								Contact Us
-							</Link>
+						<Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>
+							Quick Links
 						</Typography>
-						<Typography>Email: edunews@newspaper.com</Typography>
-						<Typography>Address: 123 Helsinki, Finland</Typography>
-						<Link href="/about" color="inherit" underline="hover" sx={{ display: "block", mb: 1 }}>
-							About Us
-						</Link>
-						<Link href="/advertise" color="inherit" underline="hover" sx={{ display: "block", mb: 1 }}>
-							Advertise
-						</Link>
-						<Link href="/terms" color="inherit" underline="hover" sx={{ display: "block", mb: 1 }}>
-							Terms of Service
-						</Link>
-						<Link href="/PrivacyPolicy" color="inherit" underline="hover" sx={{ display: "block" }}>
-							Privacy Policy
-						</Link>
+						<NavLink to="/about" style={{ textDecoration: 'none' }}>
+							<Typography variant="body1" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", mb: 1, '&:hover': { color: '#aa3030' } }}>
+								About Us
+							</Typography>
+						</NavLink>
+						<NavLink to="/advertise" style={{ textDecoration: 'none' }}>
+							<Typography variant="body1" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", mb: 1, '&:hover': { color: '#aa3030' } }}>
+								Advertise
+							</Typography>
+						</NavLink>
+						<NavLink to="/terms" style={{ textDecoration: 'none' }}>
+							<Typography variant="body1" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", mb: 1, '&:hover': { color: '#aa3030' } }}>
+								Terms of Service
+							</Typography>
+						</NavLink>
+						<NavLink to="/PrivacyPolicy" style={{ textDecoration: 'none' }}>
+							<Typography variant="body1" sx={{ color: isDarkMode ? "#e6e6e6" : "#191919", '&:hover': { color: '#aa3030' } }}>
+								Privacy Policy
+							</Typography>
+						</NavLink>
 					</Grid>
 					<Grid item xs={12} sm={4}>
 						<Typography variant="h6" sx={{ color: "#aa3030", mb: 2 }}>

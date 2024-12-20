@@ -19,7 +19,7 @@ const Home_Page = () => {
           <Articles />
         </div>
         <div>
-          <Divider orientation="vertical" variant="middle" flexItem />
+          <Divider orientation="vertical" variant="middle" flexItem sx={{mr:"5vh"}}/>
         </div>
         <div className="aside">
           <WeatherApp />

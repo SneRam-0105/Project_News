@@ -48,20 +48,15 @@ const Business_Page = () => {
 					<p>{error}</p>
 				) : loading ? (
 					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							height: '100vh', // Set to full viewport height or adjust as needed
-							position: 'relative',
-						}}
-					>
-						<CircularProgress
-							sx={{
-								color: "#aa3030",
-							}}
-						/>
-					</Box>
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress sx={{ color: "#aa3030" }} />
+          </Box>
 
 				) : (
 					<div style={{ marginBottom: "100px" }}>

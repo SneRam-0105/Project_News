@@ -51,11 +51,16 @@ const Education = () => {
 							position: 'relative',
 						}}
 					>
-						<CircularProgress
-							sx={{
-								color: isDarkMode ? "e6e6e6" : "#aa3030",
-							}}
-						/>
+					<Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress sx={{ color: "#aa3030" }} />
+          </Box>
 					</Box>
 		);
 	}

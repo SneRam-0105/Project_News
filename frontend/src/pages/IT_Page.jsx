@@ -29,8 +29,7 @@ const IT_Page = () => {
       .then((response) => {
         const fetchedArticles = response.data.articles || [];
         setArticles(fetchedArticles);
-        setFilteredNews(fetchedArticles); // Initialize filtered news with all articles
-        setLoading(false);
+        setFilteredNews(fetchedArticles);
       })
       .catch((error) => {
         setError(`Error fetching data: ${error.message}`);
@@ -46,7 +45,16 @@ const IT_Page = () => {
         {error ? (
           <p>{error}</p>
         ) : loading ? (
-          <CircularProgress sx={{ color: "#aa3030" }} />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress sx={{ color: "#aa3030" }} />
+          </Box>
         ) : (
           <>
             <div>
@@ -64,21 +72,21 @@ const IT_Page = () => {
                       </InputAdornment>
                     ),
                     style: {
-                      color: isDarkMode ? "#e6e6e6" : "#191919", // Set the text color
+                      color: isDarkMode ? "#e6e6e6" : "#191919",
                     },
                   }}
                   InputLabelProps={{
                     style: {
-                      color: isDarkMode ? "#e6e6e6" : "#191919", // Set placeholder color
+                      color: isDarkMode ? "#e6e6e6" : "#191919", 
                     },
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
-                        borderColor: isDarkMode ? "#e6e6e6" : "#191919", // Border color
+                        borderColor: isDarkMode ? "#e6e6e6" : "#191919",
                       },
                       "&:hover fieldset": {
-                        borderColor: isDarkMode ? "#cccccc" : "#333333", // Hover border color
+                        borderColor: isDarkMode ? "#cccccc" : "#333333",
                       },
                     },
                   }}
