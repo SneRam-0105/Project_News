@@ -84,7 +84,7 @@ function Widget({
         marginBottom: 2,
         boxShadow: 1,
         borderRadius: 1,
-        backgroundColor: isDarkMode ? "#1e1e1e" : "#e6e6e6",
+        backgroundColor: isDarkMode ? "#1e1e1e" : "#fff",
       }}>
         <CardContent sx={{ flexGrow: 1 }}>
           <Typography variant="subtitle1" sx={{color:isDarkMode ? "#e6e6e6" : "#191919"}}>Stocks Rise in ‘Defensive’ Session; Dollar Gains: Markets Wrap</Typography>
