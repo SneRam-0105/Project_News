@@ -6,7 +6,7 @@ const About_us = () => {
         <Box
             sx={{
                 minHeight: "100vh",
-                backgroundColor: "black",
+                backgroundColor: "white",
                 color: "white",
                 display: "flex",
                 flexDirection: "column",
