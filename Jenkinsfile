@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install --prefix /backend'
-                sh 'npm install --prefix /frontend'  
+                sh 'npm install --prefix ./backend'
+                sh 'npm install --prefix ./frontend'  
 
             }
         }
