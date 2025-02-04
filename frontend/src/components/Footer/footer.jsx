@@ -47,7 +47,7 @@ export default function Footer() {
 								underline="hover"
 								sx={{ textDecoration: "none", color: "inherit", mb: 2 }}
 							>
-								About Us
+								About the Team
 							</Link>
 							<Link
 								href="/advertise"
